@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+       fontFamily: {
+        sans: ['Bebas Neue', 'Arial', 'sans-serif'],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
