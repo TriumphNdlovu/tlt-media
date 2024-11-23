@@ -1,6 +1,7 @@
 'use client';
 import { useState } from "react";
 import Image from "next/image";
+import Navbar from "../components/Navbar";
 
 interface Picture {
   src: string;
@@ -84,7 +85,8 @@ const PortfolioSection = () => {
   };
 
   return (
-    <section id="portfolio" className="bg-black text-white py-16 px-6">
+    <section id="portfolio" className="bg-white text-black py-16 px-6 min-h-screen">
+      <Navbar  />
       <h2 className="text-4xl md:text-6xl font-serif uppercase text-center tracking-widest mb-12">
         Portfolio.
       </h2>
@@ -164,7 +166,7 @@ const PortfolioSection = () => {
               className="absolute top-2 right-2 text-black text-2xl font-bold"
               onClick={closeModal}
             >
-              &times;
+              X
             </button>
             {/* Image */}
             <Image
