@@ -86,7 +86,9 @@ const PortfolioSection = () => {
 
   return (
     <section id="portfolio" className="bg-white text-black py-16 px-6 min-h-screen">
-      <Navbar  />
+      <div className="bg-black text-white">
+        <Navbar  />
+      </div>
       <h2 className="text-4xl md:text-6xl font-serif uppercase text-center tracking-widest mb-12">
         Portfolio.
       </h2>
