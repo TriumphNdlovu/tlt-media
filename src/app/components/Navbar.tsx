@@ -36,14 +36,14 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 py-4 px-6 transition-all ${
+      className={`fixed top-0 left-0 w-full z-50 py-4 px-6 transition-all  ${
         isScrolled ? "bg-black text-white shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold uppercase tracking-wider logo">
-          TLT Media
+          TLT_Media
         </Link>
 
         {/* Desktop Menu */}
@@ -66,7 +66,7 @@ const Navbar = () => {
 
         {/* Hamburger Menu */}
         <button
-          className="lg:hidden text-white"
+          className="lg:hidden text-black"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
