@@ -8,21 +8,18 @@ const Navbar = () => {
   const [currentPath, setCurrentPath] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
-  // Handle scroll background change
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle current path
   useEffect(() => {
     if (typeof window !== "undefined") {
       setCurrentPath(window.location.pathname);
     }
   }, []);
 
-  // Close menu on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (!menuRef.current?.contains(e.target as Node)) {
@@ -41,14 +38,12 @@ const Navbar = () => {
       }`}
     >
       <div className="flex justify-between items-center">
-        {/* Logo */}
         <Link href="/" className="text-2xl font-bold uppercase tracking-wider logo">
           TLT_Media
         </Link>
 
-        {/* Desktop Menu */}
         <div className="hidden lg:flex space-x-8 font-bold">
-          {["Home", "Portfolio", "About", "Contact"].map((item) => {
+          {["Home", "Portfolio", "About", "Book"].map((item) => {
             const route = item === "Home" ? "/" : `/${item.toLowerCase()}`;
             return (
               <Link key={item} href={route}>
@@ -64,9 +59,8 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* Hamburger Menu */}
         <button
-          className="lg:hidden text-black"
+          className="lg:hidden text-white"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -110,7 +104,7 @@ const Navbar = () => {
           ref={menuRef}
           className="lg:hidden mt-4 bg-gray-800 text-white text-center rounded-lg shadow-md"
         >
-          {["Home", "Portfolio", "About", "Contact"].map((item) => {
+          {["Home", "Portfolio", "About", "Book"].map((item) => {
             const route = item === "Home" ? "/" : `/${item.toLowerCase()}`;
             return (
               <Link key={item} href={route}>
@@ -118,7 +112,7 @@ const Navbar = () => {
                   className={`block w-full py-3 text-lg ${
                     currentPath === route ? "bg-gray-700" : "hover:bg-gray-700"
                   }`}
-                  onClick={() => setIsMenuOpen(false)} // Close menu after selection
+                  onClick={() => setIsMenuOpen(false)} 
                 >
                   {item}
                 </button>

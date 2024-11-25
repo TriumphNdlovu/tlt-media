@@ -4,20 +4,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap');
 
 
-:root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+/* Pixel Font */
+@font-face {
+  font-family: "PixelFont";
+  src: url("/path-to-font/pixel-font.woff2") format("woff2");
+}
+.pixel-font {
+  font-family: "PixelFont", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffffff;
-    --foreground: #171717;
-  }
+/* CRT Effect */
+.crt-effect {
+  text-shadow: 0px 0px 5px rgba(0, 255, 0, 0.75), 0px 0px 10px rgba(0, 255, 0, 0.5);
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Retro Border */
+.retro-border {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 0px 8px rgba(0, 255, 255, 0.5);
 }
