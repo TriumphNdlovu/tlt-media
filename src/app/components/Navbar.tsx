@@ -102,7 +102,7 @@ const Navbar = () => {
       {isMenuOpen && (
         <div
           ref={menuRef}
-          className="lg:hidden mt-4 bg-gray-800 text-white text-center rounded-lg shadow-md"
+          className="lg:hidden mt-4 bg-black border border-white text-white text-center rounded-lg shadow-md"
         >
           {["Home", "Portfolio", "About", "Book"].map((item) => {
             const route = item === "Home" ? "/" : `/${item.toLowerCase()}`;
@@ -110,9 +110,9 @@ const Navbar = () => {
               <Link key={item} href={route}>
                 <button
                   className={`block w-full py-3 text-lg ${
-                    currentPath === route ? "bg-gray-700" : "hover:bg-gray-700"
+                    currentPath === route ? "underline" : "hover:bg-gray-700"
                   }`}
-                  onClick={() => setIsMenuOpen(false)} 
+                  onClick={() => setIsMenuOpen(!isMenuOpen)} 
                 >
                   {item}
                 </button>
