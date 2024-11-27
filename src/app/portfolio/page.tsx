@@ -96,7 +96,7 @@ const PortfolioSection = () => {
             {category.pictures.map((picture, picIndex) => (
               <div
                 key={picIndex}
-                className="relative group cursor-pointer border-4 border-yellow-500 rounded-xl overflow-hidden shadow-xl"
+                className="relative group cursor-pointer border border-yellow-500 rounded-xl overflow-hidden shadow-xl"
                 onClick={() => openModal(picture)}
               >
                 <Image

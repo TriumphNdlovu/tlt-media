@@ -110,7 +110,7 @@ const Navbar = () => {
               <Link key={item} href={route}>
                 <button
                   className={`block w-full py-3 text-lg ${
-                    currentPath === route ? "underline" : "hover:bg-gray-700"
+                    currentPath === route ? "underline text-yellow-400" : "hover:underline"
                   }`}
                   onClick={() => setIsMenuOpen(!isMenuOpen)} 
                 >

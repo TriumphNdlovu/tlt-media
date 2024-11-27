@@ -103,7 +103,7 @@ const HomePage = () => {
         </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {[1, 2, 3, 4, 5, 6].map((item) => (
-            <div key={item} className="group relative overflow-hidden rounded-xl cursor-pointer border-4 border-yellow-500 shadow-lg">
+            <div key={item} className="group relative overflow-hidden rounded-xl cursor-pointer border border-yellow-500 shadow-lg">
               <Link
                 href={`/portfolio?section=${
                   item === 1 ? 'Graduation' : item === 2 ? 'Wedding' : 'Videos'

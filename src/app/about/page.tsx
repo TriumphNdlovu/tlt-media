@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
+import { Router } from 'next/router';
 
 const AboutPage = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -27,7 +28,8 @@ const AboutPage = () => {
 
       {/* Hero Section */}
       <div className="text-center mb-12 sm:mb-16">
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif uppercase tracking-widest mb-4">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif 
+        uppercase tracking-widest mb-4 text-yellow-400">
           About Me.
         </h1>
         <p className="text-sm sm:text-lg md:text-xl text-gray-400 font-light">
@@ -51,7 +53,7 @@ const AboutPage = () => {
         </div>
 
         {/* Bio Section */}
-        <div className="bg-gray-800 text-gray-200 p-4 sm:p-6 rounded-md shadow-md terminal-text">
+        <div className="border border-white text-gray-200 p-4 sm:p-6 rounded-md shadow-md terminal-text">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif uppercase mb-4">
             Hi, I’m <span className="text-yellow-400">Hlogi</span>.
           </h2>
@@ -71,10 +73,10 @@ const AboutPage = () => {
 
       {/* Philosophy or Fun Fact */}
       <div className="mt-12 sm:mt-16 text-center">
-        <h3 className="text-lg sm:text-2xl md:text-3xl font-serif uppercase mb-4">
+        <h3 className="text-lg sm:text-2xl md:text-3xl text-yellow-400 font-serif uppercase mb-4">
           Photography Philosophy.
         </h3>
-        <div className="bg-gray-900 text-yellow-300 p-4 sm:p-6 rounded-md max-w-3xl mx-auto">
+        <div className="border border-white text-white p-4 sm:p-6 rounded-md max-w-3xl mx-auto">
           <p className="text-sm sm:text-base md:text-lg italic">
             “Photography is the art of frozen time. It’s the ability to store emotion and feelings
             within a frame.”
@@ -85,7 +87,9 @@ const AboutPage = () => {
       {/* Call-to-Action */}
       <div className="mt-12 sm:mt-16 text-center">
         <button
-          onClick={() => window.location.href = '#portfolio'}
+          onClick={ () => {
+            window.location.href = '/portfolio';
+          }}
           className="bg-yellow-400 text-black px-6 sm:px-8 py-3 sm:py-4 rounded-md text-sm sm:text-lg uppercase font-bold shadow-lg hover:bg-yellow-500 transition-colors"
         >
           View My Work
@@ -96,7 +100,8 @@ const AboutPage = () => {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-yellow-400 text-black p-3 rounded-full shadow-lg hover:bg-yellow-500 transition-colors"
+          className="fixed bottom-8 right-8 bg-yellow-400 text-black 
+          p-3 rounded-full shadow-lg hover:bg-yellow-500 transition-colors"
         >
           ↑
         </button>
