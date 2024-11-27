@@ -58,7 +58,7 @@ const BookPage = () => {
           Check My Availability and Book a Session
         </motion.h2>
 
-        <div className="max-w-7xl mx-auto bg-gray-800 p-8 rounded-xl shadow-xl mb-12">
+        <div className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12">
           <iframe
             src="https://calendar.google.com/calendar/embed?src=teeekshop%40gmail.com&ctz=Africa%2FJohannesburg"
             style={{ border: '0', width: '100%', height: '600px' }}
@@ -69,81 +69,83 @@ const BookPage = () => {
         </div>
 
         {/* Booking Form */}
+          <h3 className="text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-4 text-center">
+            Book a Session
+          </h3>
+          
         <motion.div
           initial="hidden"
           animate="visible"
           variants={textVariants}
-          className="bg-gray-800 p-8 rounded-xl shadow-xl"
+          // className="bg-gray-800 p-8 rounded-xl shadow-xl max-w-7xl text-center"
+          className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12"
         >
-          <h3 className="text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-4 text-center">
-            Book a Session
-          </h3>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <form onSubmit={handleSubmit} className="space-y-6 ">
+            <div className="grid grid-cols-1 sm:grid-cols-1 gap-6">
               <div>
-                <label htmlFor="name" className="block text-sm sm:text-lg text-gray-300 mb-2">Full Name</label>
+                <label htmlFor="name" className="block text-sm sm:text-lg text-white mb-2">Full Name</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full p-3 bg-gray-700 text-gray-200 rounded-md"
+                  className="w-full p-3  text-white rounded-md border border-white bg-black"
                   required
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm sm:text-lg text-gray-300 mb-2">Email</label>
+                <label htmlFor="email" className="block text-sm sm:text-lg text-white mb-2">Email</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full p-3 bg-gray-700 text-gray-200 rounded-md"
+                  className="w-full p-3  text-white rounded-md border border-white bg-black"
                   required
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-1 gap-6">
               <div>
-                <label htmlFor="phone" className="block text-sm sm:text-lg text-gray-300 mb-2">Phone Number</label>
+                <label htmlFor="phone" className="block text-sm sm:text-lg text-white mb-2">Phone Number</label>
                 <input
                   type="tel"
                   id="phone"
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full p-3 bg-gray-700 text-gray-200 rounded-md"
+                  className="w-full p-3  text-white rounded-md border border-white bg-black"
                 />
               </div>
 
               <div>
-                <label htmlFor="date" className="block text-sm sm:text-lg text-gray-300 mb-2">Preferred Session Date</label>
+                <label htmlFor="date" className="block text-sm sm:text-lg text-white mb-2">Preferred Session Date</label>
                 <input
                   type="date"
                   id="date"
                   name="date"
                   value={formData.date}
                   onChange={handleInputChange}
-                  className="w-full p-3 bg-gray-700 text-gray-200 rounded-md"
+                  className="w-full p-3  text-white rounded-md border border-white bg-black"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm sm:text-lg text-gray-300 mb-2">Message</label>
+              <label htmlFor="message" className="block text-sm sm:text-lg text-white mb-2">Message</label>
               <textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleInputChange}
-                rows={4}
-                className="w-full p-3 bg-gray-700 text-gray-200 rounded-md"
+                rows={2}
+                className="w-full p-3  text-white rounded-md border border-white bg-black"
               ></textarea>
             </div>
 
@@ -159,7 +161,7 @@ const BookPage = () => {
           </form>
 
           {formStatus && (
-            <div className="mt-6 text-center text-xl text-yellow-400">
+            <div className="mt-6 text-center text-xl text-yellow">
               {formStatus}
             </div>
           )}
