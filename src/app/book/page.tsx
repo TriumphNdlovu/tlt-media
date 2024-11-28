@@ -30,17 +30,30 @@ const BookPage = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setFormStatus('Submitting...');
+  e.preventDefault();
+  setIsSubmitting(true);
+  setFormStatus('Submitting...');
 
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
-      setIsSubmitting(false);
+  try {
+    const response = await fetch('/api/sendEmail', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
       setFormStatus('Booking request submitted successfully!');
       setFormData({ name: '', email: '', phone: '', message: '', date: '' }); // Reset form
-    }, 2000);
-  };
+    } else {
+      setFormStatus('Failed to submit booking. Please try again.');
+    }
+  } catch (error) {
+    setFormStatus('Error connecting to the server.');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   return (
     <div className="bg-black text-offwhite font-serif">
@@ -161,7 +174,7 @@ const BookPage = () => {
           </form>
 
           {formStatus && (
-            <div className="mt-6 text-center text-xl text-yellow">
+            <div className="mt-6 text-center text-xl text-yellow text-white">
               {formStatus}
             </div>
           )}
