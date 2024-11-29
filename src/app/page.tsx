@@ -144,7 +144,7 @@ const HomePage = () => {
           variants={textVariants}
           className="text-xl sm:text-2xl md:text-3xl mt-6 mb-8 font-light max-w-xl mx-auto text-offwhite opacity-80 text-center text-white"
         >
-          We are a team of professional photographers and videographers who specialize in capturing life's most precious moments. Our goal is to provide you with the best possible service and deliver exceptional results that you will cherish forever.
+          “We are a team of professional photographers and videographers who specialize in capturing life's most precious moments. Our goal is to provide you with the best possible service and deliver exceptional results that you will cherish forever.”
         </motion.p>
       </section>
 

@@ -11,6 +11,7 @@ const BookPage = () => {
     phone: '',
     message: '',
     date: '',
+    time: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -43,7 +44,7 @@ const BookPage = () => {
 
     if (response.ok) {
       setFormStatus('Booking request submitted successfully!');
-      setFormData({ name: '', email: '', phone: '', message: '', date: '' }); // Reset form
+      setFormData({ name: '', email: '', phone: '', message: '', date: '' ,time: ''}); // Reset form
     } else {
       setFormStatus('Failed to submit booking. Please try again.');
     }
@@ -149,7 +150,18 @@ const BookPage = () => {
                 />
               </div>
             </div>
-
+            <div>
+              <label htmlFor="time" className="block text-sm sm:text-lg text-white mb-2">Preferred Session Time</label>
+              <input
+                type="time"
+                id="time"
+                name="time"
+                value={formData.time}
+                onChange={handleInputChange}
+                className="w-full p-3  text-white rounded-md border border-white bg-black"
+                required
+              />
+            </div>
             <div>
               <label htmlFor="message" className="block text-sm sm:text-lg text-white mb-2">Message</label>
               <textarea
