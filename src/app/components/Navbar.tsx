@@ -1,6 +1,7 @@
 'use client';
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,61 +9,72 @@ const Navbar = () => {
   const [currentPath, setCurrentPath] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
+  // Track scroll position for sticky effect
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Get the current path
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setCurrentPath(window.location.pathname);
+      setCurrentPath(window.location.pathname.replace(/\/$/, "")); // Normalize trailing slashes
     }
   }, []);
 
+  // Close the mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (!menuRef.current?.contains(e.target as Node)) {
         setIsMenuOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const menuItems = [
+    { label: "Home", route: "/" },
+    { label: "Portfolio", route: "/portfolio" },
+    { label: "About", route: "/about" },
+    { label: "Book", route: "/book" },
+  ];
+
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 py-4 px-6 transition-all text-white ${
-        isScrolled ? "bg-black text-white shadow-lg" : "bg-transparent"
+      className={`fixed top-0 left-0 w-full z-50 py-4 px-6 transition-all ${
+        isScrolled ? "bg-black text-white shadow-lg" : "bg-transparent text-white"
       }`}
     >
       <div className="flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold uppercase tracking-wider logo">
-          TLT_Media
+        {/* Logo */}
+        <Link href="/" className="text-2xl font-bold uppercase tracking-wider flex items-center">
+          <Image src="/logo.png" alt="TLT Media logo" width={50} height={50} className="rounded" />
+          <span className="ml-2">TLTMedia.</span>
         </Link>
 
+        {/* Desktop Menu */}
         <div className="hidden lg:flex space-x-8 font-bold">
-          {["Home", "Portfolio", "About", "Book"].map((item) => {
-            const route = item === "Home" ? "/" : `/${item.toLowerCase()}`;
-            return (
-              <Link key={item} href={route}>
-                <span
-                  className={`nav-link ${
-                    currentPath === route ? "text-yellow-500" : "text-white"
-                  }`}
-                >
-                  {item}
-                </span>
-              </Link>
-            );
-          })}
+          {menuItems.map(({ label, route }) => (
+            <Link key={label} href={route}>
+              <span
+                className={`nav-link ${
+                  currentPath === route ? "text-yellow-500" : "text-white"
+                } hover:underline`}
+              >
+                {label}
+              </span>
+            </Link>
+          ))}
         </div>
 
+        {/* Mobile Menu Button */}
         <button
           className="lg:hidden text-white"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
         >
           {isMenuOpen ? (
             <svg
@@ -73,11 +85,7 @@ const Navbar = () => {
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
             <svg
@@ -88,11 +96,7 @@ const Navbar = () => {
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
           )}
         </button>
@@ -104,21 +108,18 @@ const Navbar = () => {
           ref={menuRef}
           className="lg:hidden mt-4 bg-black border border-white text-white text-center rounded-lg shadow-md"
         >
-          {["Home", "Portfolio", "About", "Book"].map((item) => {
-            const route = item === "Home" ? "/" : `/${item.toLowerCase()}`;
-            return (
-              <Link key={item} href={route}>
-                <button
-                  className={`block w-full py-3 text-lg ${
-                    currentPath === route ? "underline text-yellow-400" : "hover:underline"
-                  }`}
-                  onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                >
-                  {item}
-                </button>
-              </Link>
-            );
-          })}
+          {menuItems.map(({ label, route }) => (
+            <Link key={label} href={route}>
+              <button
+                className={`block w-full py-3 text-lg ${
+                  currentPath === route ? "underline text-yellow-400" : "hover:underline"
+                }`}
+                onClick={() => setIsMenuOpen(false)} // Close menu on item click
+              >
+                {label}
+              </button>
+            </Link>
+          ))}
         </div>
       )}
     </nav>
