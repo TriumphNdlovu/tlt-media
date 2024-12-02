@@ -1,14 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
-import { Router } from 'next/router';
 
 const AboutPage = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Scroll to top logic
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -23,90 +22,170 @@ const AboutPage = () => {
   }, []);
 
   return (
-    <section className="min-h-screen bg-black text-white px-6 py-16 relative">
+    <motion.section
+      className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
       <Navbar />
 
       {/* Hero Section */}
-      <div className="text-center mb-12 sm:mb-16">
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif 
-        uppercase tracking-widest mb-4 text-yellow-400">
+      <motion.div
+        className="flex flex-col items-center justify-center px-8 py-32 text-center"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <motion.h1
+          className="text-4xl sm:text-5xl font-serif text-yellow-400 uppercase mb-6"
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
           About Me.
-        </h1>
-        <p className="text-sm sm:text-lg md:text-xl text-gray-400 font-light">
-          <span className="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-white">
-            Capturing moments. Telling stories. Creating timeless art.
-          </span>
+        </motion.h1>
+
+        {/* Profile Picture Section */}
+        <motion.div
+          className="flex flex-col items-center mt-4 mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 1 }}
+        >
+          <motion.div
+            className="relative w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] rounded-full overflow-hidden mb-6 border-4 border-yellow-400 shadow-xl"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Image
+              src="/homescreen1.jpg" // Replace with the actual profile picture
+              alt="Photographer's Profile Picture"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+        </motion.div>
+
+        <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-6">
+          I’m <span className="text-yellow-400">Hlogi</span>, a passionate photographer with over{' '}
+          <span className="text-yellow-400">5 years</span> of experience capturing life’s most
+          precious moments. From weddings to graduations and candid portraits, I strive to preserve
+          emotions in every frame.
         </p>
-      </div>
+        <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
+          Inspired by retro analog photography and minimalistic aesthetics, I aim to deliver
+          timeless art with every project.
+        </p>
 
-      {/* Content Section */}
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
-        {/* Photographer's Image */}
-        <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px]">
-          <Image
-            src="/homescreen1.jpg" // Replace with your photographer's image
-            alt="Photographer"
-            fill
-            className="object-cover rounded-md hover:scale-105 transition-transform duration-300"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
+        <motion.button
+          onClick={() => window.location.href = '/portfolio'}
+          className="bg-yellow-400 text-black px-8 py-4 rounded-md uppercase font-bold shadow-lg hover:bg-yellow-500 transition-all"
+          whileHover={{ scale: 1.05 }}
+        >
+          View My Work
+        </motion.button>
+      </motion.div>
 
-        {/* Bio Section */}
-        <div className="border border-white text-gray-200 p-4 sm:p-6 rounded-md shadow-md terminal-text">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif uppercase mb-4">
-            Hi, I’m <span className="text-yellow-400">Hlogi</span>.
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
-            With over <span className="text-yellow-400">5 years</span> of experience, I’ve
-            dedicated my life to capturing the moments that matter. Whether it’s the magic of
-            weddings, the joy of graduations, or the raw emotions of candid moments, my goal is to
-            turn fleeting instances into timeless memories.
-          </p>
-          <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
-            Inspired by the retro charm of analog photography and the clean aesthetics of
-            minimalism, I bring a unique touch to every project. Let’s create something
-            unforgettable together.
-          </p>
-        </div>
-      </div>
-
-      {/* Philosophy or Fun Fact */}
-      <div className="mt-12 sm:mt-16 text-center">
-        <h3 className="text-lg sm:text-2xl md:text-3xl text-yellow-400 font-serif uppercase mb-4">
-          Photography Philosophy.
-        </h3>
-        <div className="border border-white text-white p-4 sm:p-6 rounded-md max-w-3xl mx-auto">
-          <p className="text-sm sm:text-base md:text-lg italic">
+      {/* Photography Philosophy Section */}
+      <motion.div
+        className="text-center py-12 px-8 mt-12"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4, duration: 1 }}
+      >
+        <h2 className="text-3xl sm:text-4xl font-serif text-yellow-400 mb-6">
+          My Photography Philosophy
+        </h2>
+        <motion.div
+          className="max-w-3xl mx-auto p-6 rounded-md"
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.3 }}
+        >
+          <p className="text-lg sm:text-xl italic text-gray-300">
             “Photography is the art of frozen time. It’s the ability to store emotion and feelings
             within a frame.”
           </p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      {/* Call-to-Action */}
-      <div className="mt-12 sm:mt-16 text-center">
-        <button
-          onClick={ () => {
-            window.location.href = '/portfolio';
-          }}
-          className="bg-yellow-400 text-black px-6 sm:px-8 py-3 sm:py-4 rounded-md text-sm sm:text-lg uppercase font-bold shadow-lg hover:bg-yellow-500 transition-colors"
-        >
-          View My Work
-        </button>
-      </div>
+      {/* Fun Fact Section */}
+      <motion.div
+        className="text-center py-12 px-8 mt-12"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6, duration: 1 }}
+      >
+        <h3 className="text-2xl sm:text-3xl font-serif text-yellow-400 mb-6">
+          A Fun Fact About Me
+        </h3>
+        <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+          I started my photography journey with an old film camera my grandfather gifted me, and it
+          ignited my love for capturing stories that transcend time.
+        </p>
+      </motion.div>
+
+      {/* Contact and Social Media Links Section */}
+      <motion.div
+        className="text-center py-16 px-8 mt-12"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 1 }}
+      >
+        <h3 className="text-2xl sm:text-3xl font-serif text-yellow-400 mb-6">
+          Contact Me
+        </h3>
+        <p className="text-lg sm:text-xl text-gray-300 mb-6">
+          You can reach me via email or through my social media channels for inquiries and bookings.
+        </p>
+
+        {/* Contact Information */}
+        <p className="text-lg sm:text-xl text-gray-300 mb-6">
+          Email: <a href="mailto:contact@hlogi.com" className="text-yellow-400 hover:underline">contact@hlogi.com</a>
+        </p>
+
+        {/* Social Media Links */}
+        <div className="flex justify-center gap-8 mb-8">
+          <a
+            href="https://www.instagram.com/hlogi_photography"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-yellow-400 hover:text-white"
+          >
+            Instagram
+          </a>
+          <a
+            href="https://www.facebook.com/hlogi.photography"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-yellow-400 hover:text-white"
+          >
+            Facebook
+          </a>
+          <a
+            href="https://www.twitter.com/hlogi_photo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-yellow-400 hover:text-white"
+          >
+            X (formally Twitter)
+          </a>
+        </div>
+      </motion.div>
 
       {/* Scroll-to-Top Button */}
       {showScrollTop && (
-        <button
+        <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-yellow-400 text-black 
-          p-3 rounded-full shadow-lg hover:bg-yellow-500 transition-colors"
+          className="fixed bottom-8 right-8 bg-yellow-400 text-black p-3 rounded-full shadow-lg hover:bg-yellow-500 transition-all"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
         >
           ↑
-        </button>
+        </motion.button>
       )}
-    </section>
+    </motion.section>
   );
 };
 
