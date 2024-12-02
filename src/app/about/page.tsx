@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const AboutPage = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -185,7 +186,9 @@ const AboutPage = () => {
           ↑
         </motion.button>
       )}
+      <Footer/>
     </motion.section>
+
   );
 };
 

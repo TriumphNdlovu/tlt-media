@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Navbar from './components/Navbar';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import Footer from './components/Footer';
 
 const HomePage = () => {
   const [showScrollUp, setShowScrollUp] = useState(false);
@@ -199,32 +200,40 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* About Section */}
-        <section className="py-16 px-6">
-          <motion.h2
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={textVariants}
-            className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 text-yellow-400 font-serif uppercase tracking-widest"
-          >
-            About TLT Media.
-          </motion.h2>
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            variants={textVariants}
-            className="text-xl sm:text-2xl md:text-3xl mt-6 mb-8 font-light max-w-xl mx-auto text-offwhite opacity-80 text-center text-white"
-          >
-            “We are a team of professional photographers and videographers who
-            specialize in capturing life's most precious moments. Our goal is to
-            provide you with the best possible service and deliver exceptional
-            results that you will cherish forever.”
-          </motion.p>
-        </section>
+        <section className="py-16 px-6 text-white">
+  <motion.h2
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={textVariants}
+    className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 font-serif uppercase tracking-widest text-yellow-400"
+  >
+    About TLT Media
+  </motion.h2>
 
-        {/* Testimonials Section */}
-<section className="py-16 px-6 bg-yellow-500 text-black">
+  <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="flex justify-center items-center">
+      {/* Logo */}
+      <Image
+      src="/logo.png" // Replace with your actual logo path
+        alt="TLT Media Logo"
+        width={300} // Adjust size as needed
+        height={300} // Adjust size as needed
+        className="rounded-lg shadow-md"
+      />
+    </div>
+
+    <div className="flex flex-col justify-center">
+      <p className="text-lg text-white">
+        “TLT Media is a dynamic photography and videography studio dedicated to capturing life's most precious moments. With a passion for 
+        storytelling through the lens, we specialize in weddings, graduations, 
+        corporate events, and creative video projects.”
+      </p>
+    </div>
+  </div>
+</section>
+
+       <section className="py-16 px-6 bg-yellow-500 text-black">
   <motion.h2
     initial="hidden"
     whileInView="visible"
@@ -234,7 +243,7 @@ const HomePage = () => {
   >
     What Our Clients Say.
   </motion.h2>
-  
+
   <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {[1, 2, 3].map((item) => (
       <motion.div
@@ -261,7 +270,7 @@ const HomePage = () => {
             <p className="text-sm text-gray-600">Location {item}</p>
           </div>
         </div>
-        <p className="text-base text-gray-800">
+        <p className="text-base text-gray-800 mb-4">
           {item === 1
             ? "“TLT Media captured my wedding beautifully! The team was professional and friendly throughout. Highly recommend!”"
             : item === 2
@@ -271,13 +280,45 @@ const HomePage = () => {
       </motion.div>
     ))}
   </div>
+
+  {/* See More Reviews and Add Review Buttons */}
+  <div className="text-center mt-12">
+  <div className="flex flex-col sm:flex-row justify-center gap-4">
+    <a
+      href="https://www.google.com/search?q=TLT+Media" // Replace with your actual "See More Reviews" URL
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-black text-yellow-400 py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-gray-800 hover:text-yellow-300 transition-colors"
+    >
+      See More Reviews
+    </a>
+    <a
+      href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" // Replace with your actual "Add Review" URL
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-black text-yellow-400 py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-grey-500 hover:text-yellow-300 hover:bg-gray-800 transition-colors"
+    >
+      Add a Review
+    </a>
+  </div>
+</div>
+
 </section>
 
 
+
+
         {/* Footer */}
-        <footer className="py-8 text-white text-center">
-          <p>&copy; 2024 TLT Media. All rights reserved.</p>
-        </footer>
+        
+      <Footer/>
+      </div>
+
+      {/* Scroll to Top Button */}
+      <div
+        className={`fixed bottom-6 right-6 z-50 ${
+          showScrollUp ? 'opacity-100' : 'opacity-0'
+        } transition-opacity`}
+      >
       </div>
     </div>
   );

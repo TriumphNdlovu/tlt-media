@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 interface Picture {
   src: string;
@@ -72,6 +73,7 @@ const PortfolioSection = () => {
   }, []);
 
   return (
+    <>
     <section className="bg-black text-white py-16 px-6 min-h-screen scroll-mt-16">
       <Navbar />
       <motion.h2
@@ -192,6 +194,8 @@ const PortfolioSection = () => {
         </motion.button>
       )}
     </section>
+     <Footer/>
+     </>
   );
 };
 
