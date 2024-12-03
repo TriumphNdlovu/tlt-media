@@ -215,10 +215,10 @@ const HomePage = () => {
     <div className="flex justify-center items-center">
       {/* Logo */}
       <Image
-      src="/logo.png" // Replace with your actual logo path
+      src="/logo.png" 
         alt="TLT Media Logo"
-        width={300} // Adjust size as needed
-        height={300} // Adjust size as needed
+        width={400} 
+        height={400} 
         className="rounded-lg shadow-md"
       />
     </div>
@@ -319,6 +319,14 @@ const HomePage = () => {
           showScrollUp ? 'opacity-100' : 'opacity-0'
         } transition-opacity`}
       >
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={scrollToTop}
+          className="bg-yellow-400 text-black py-3 px-6 rounded-full shadow-lg hover:bg-yellow-500"
+        >
+          ↑
+        </motion.button>
       </div>
     </div>
   );

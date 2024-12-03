@@ -25,6 +25,12 @@ const AboutPage = () => {
   return (
     <motion.section
       className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white"
+      style={{
+        backgroundImage: 'url(/background-image.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -60,7 +66,7 @@ const AboutPage = () => {
             transition={{ duration: 0.3 }}
           >
             <Image
-              src="/homescreen1.jpg" // Replace with the actual profile picture
+              src="/logo.png"
               alt="Photographer's Profile Picture"
               fill
               className="object-cover"
@@ -69,14 +75,10 @@ const AboutPage = () => {
         </motion.div>
 
         <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-6">
-          I’m <span className="text-yellow-400">Hlogi</span>, a passionate photographer with over{' '}
+          ”I’m <span className="text-yellow-400">Hlogi</span>, a passionate photographer with over{' '}
           <span className="text-yellow-400">5 years</span> of experience capturing life’s most
           precious moments. From weddings to graduations and candid portraits, I strive to preserve
-          emotions in every frame.
-        </p>
-        <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
-          Inspired by retro analog photography and minimalistic aesthetics, I aim to deliver
-          timeless art with every project.
+          emotions in every frame.”
         </p>
 
         <motion.button
@@ -186,9 +188,8 @@ const AboutPage = () => {
           ↑
         </motion.button>
       )}
-      <Footer/>
+      <Footer />
     </motion.section>
-
   );
 };
 
