@@ -6,9 +6,48 @@ import Navbar from './components/Navbar';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Footer from './components/Footer';
+import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
 const HomePage = () => {
   const [showScrollUp, setShowScrollUp] = useState(false);
+
+  const review = [
+    {
+      id: 1,
+      name: 'Evidence Nomcebo',
+      rating: 5,
+      review:
+        '“From our very first interaction on the 12 May 2024, it was clear that TLT Media is not just a photographer, but an artist dedicated to their craft. They took the time to understand our vision and what we were looking for, which made us feel comfortable and excited for the shoot. I would definitely do a shoot with you again best service ever!!!”',
+    },
+    {
+      id: 2,
+      name: 'Kakanyo M',
+      rating: 5,
+      review:
+      '“TLT media did my graduation shoot, the photos are amazing, they were the best part of my day. He also made a mini video of my grad it was exceptional 👌 hes delivers quality yet reasonable. You wont regret choosing TLT media”',
+    },
+    {
+      id: 3,
+      name: 'Mmtumisho Mphahlele',
+      rating: 5,
+      review:
+      '“I WOULD RECOMMEND TLT_MEDIA, I HAD A WONDERFUL EXPERIENCE WITH HIM, I GOT EXCELLENT SERVICE FROM HIM.”',
+    },
+    {
+      id: 4,
+      name: 'Progee Real king',
+      rating: 5,
+      review:
+        '“Best music video Quality an directing skills 🔥🔥❤️”',
+    },
+    {
+      id: 5,
+      name: 'Triumph Ndlovu',
+      rating: 5,
+      review:
+        '“Wonderful service I highly recommend 🔥”',
+    }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +59,25 @@ const HomePage = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const getStarRating = (rating: number) => {
+  const fullStars = Math.floor(rating);
+  const halfStars = Math.round(rating - fullStars);
+  const emptyStars = 5 - fullStars - halfStars;
+  return (
+    <>
+      {[...Array(fullStars)].map((_, index) => (
+        <FaStar key={`full-${index}`} className="text-yellow-400" />
+      ))}
+      {[...Array(halfStars)].map((_, index) => (
+        <FaStarHalfAlt key={`half-${index}`} className="text-yellow-400" />
+      ))}
+      {[...Array(emptyStars)].map((_, index) => (
+        <FaRegStar key={`empty-${index}`} className="text-yellow-400" />
+      ))}
+    </>
+  );
+};
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -245,65 +303,64 @@ const HomePage = () => {
   </motion.h2>
 
   <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {[1, 2, 3].map((item) => (
+    {review.map((item) => (
       <motion.div
-        key={item}
+        key={item.id}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={{
           hidden: { opacity: 0, y: 50 },
-          visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: item * 0.2 } },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: item.id * 0.2 } },
         }}
         className="p-6 bg-white rounded-lg shadow-md"
       >
         <div className="flex items-center mb-4">
           <Image
-            src={`/testimonials/user${item}.jpg`} // Replace with actual images or placeholders
-            alt={`Client ${item}`}
-            width={50}
-            height={50}
+            src={`/user.png`}
+            alt={`${item.name}`}
+            width={60}
+            height={60}
             className="rounded-full border-2 border-yellow-400"
           />
           <div className="ml-4">
-            <h3 className="text-lg font-bold">Client {item}</h3>
-            <p className="text-sm text-gray-600">Location {item}</p>
+            <h3 className="text-lg font-bold">{item.name}</h3>
           </div>
         </div>
-        <p className="text-base text-gray-800 mb-4">
-          {item === 1
-            ? "“TLT Media captured my wedding beautifully! The team was professional and friendly throughout. Highly recommend!”"
-            : item === 2
-            ? "“Absolutely loved their service. They made my graduation shoot a dream come true!”"
-            : "“The video quality and editing were top-notch. They really tell stories through their work!”"}
-        </p>
+        {/* Add Star Rating */}
+        <div className="flex flex-row items-center mb-4">
+          <div className="mr-2">Rating:</div>  {/* Added a margin to the first div to separate them */}
+          <div className='flex'>{getStarRating(item.rating)}</div>  {/* Keeps the star rating aligned */}
+        </div>
+
+        <p className="text-base text-gray-800 mb-4">{item.review}</p>
       </motion.div>
     ))}
   </div>
 
   {/* See More Reviews and Add Review Buttons */}
   <div className="text-center mt-12">
-  <div className="flex flex-col sm:flex-row justify-center gap-4">
-    <a
-      href="https://www.google.com/search?q=TLT+Media" // Replace with your actual "See More Reviews" URL
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-black text-yellow-400 py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-gray-800 hover:text-yellow-300 transition-colors"
-    >
-      See More Reviews
-    </a>
-    <a
-      href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" // Replace with your actual "Add Review" URL
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-black text-yellow-400 py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-grey-500 hover:text-yellow-300 hover:bg-gray-800 transition-colors"
-    >
-      Add a Review
-    </a>
+    <div className="flex flex-col sm:flex-row justify-center gap-4">
+      <a
+        href="https://www.google.com/search?q=TLT+Media" // Replace with your actual "See More Reviews" URL
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-black text-yellow-400 py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-gray-800 hover:text-yellow-300 transition-colors"
+      >
+        See More Reviews
+      </a>
+      <a
+        href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" // Replace with your actual "Add Review" URL
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-black text-yellow-400 py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-grey-500 hover:text-yellow-300 hover:bg-gray-800 transition-colors"
+      >
+        Add a Review
+      </a>
+    </div>
   </div>
-</div>
-
 </section>
+
 
 
 
