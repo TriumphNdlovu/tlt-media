@@ -4,15 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Picture } from '../model/Picture';
+import { Category } from '../model/category';
 
-interface Picture {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-}
 
-const categories = [
+
+const categories: Category[] = [
   {
     title: 'Graduation',
     pictures: [

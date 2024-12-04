@@ -9,14 +9,14 @@ export async function POST(request: Request) {
 
     // Parse date and time
     const year = new Date(date).getFullYear();
-    const month = new Date(date).getMonth(); // 0-based
+    const month = new Date(date).getMonth(); 
     const day = new Date(date).getDate();
     const hours = Number(time.split(':')[0]);
     const minutes = Number(time.split(':')[1]);
 
     // Set up the event details
     const event: EventAttributes = {
-      start: [year, month + 1, day, hours, minutes], // 1-based month
+      start: [year, month + 1, day, hours, minutes],
       duration: { days: 1 }, // All-day event
       title: `Photography Session with ${name}`,
       description: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,

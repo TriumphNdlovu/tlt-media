@@ -6,9 +6,18 @@ import Navbar from './components/Navbar';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Footer from './components/Footer';
+import { fetchAllPicturesByCategory } from './services/cloudinaryService';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
 const HomePage = () => {
+
+
+
+  useEffect( ()=> {
+    fetchAllPicturesByCategory();
+
+  },[]);
+
   const [showScrollUp, setShowScrollUp] = useState(false);
 
   const review = [
@@ -200,7 +209,7 @@ const HomePage = () => {
                   scale: 0.98,
                   rotate: -3,
                 }}
-                className="relative group rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                className="relative group rounded-lg overflow-hidden cursor-pointer"
               >
                 <Link
                   href={`/portfolio?section=${
@@ -361,11 +370,6 @@ const HomePage = () => {
   </div>
 </section>
 
-
-
-
-
-        {/* Footer */}
         
       <Footer/>
       </div>
