@@ -8,6 +8,26 @@ import { Picture } from '../model/Picture';
 import { Category } from '../model/category';
 
 
+useEffect(() => {
+    // Make the GET request to the Next.js API route
+    
+    const fetchImages = async () => {
+      try {
+        const response = await fetch('/api/fetch-categories'); // Assuming your API route is at /api/images
+        if (!response.ok) {
+          throw new Error('Failed to fetch images');
+        }
+        const data = await response.json();
+        console.log(data)
+         // Set the response data in the state
+      } catch (err) {
+        console.log(err); // Handle error
+      }
+    };
+
+    fetchImages();
+  }, []);
+
 
 const categories: Category[] = [
   {

@@ -6,17 +6,13 @@ import Navbar from './components/Navbar';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Footer from './components/Footer';
-import { fetchAllPicturesByCategory } from './services/cloudinaryService';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
 const HomePage = () => {
 
 
 
-  useEffect( ()=> {
-    fetchAllPicturesByCategory();
-
-  },[]);
+  
 
   const [showScrollUp, setShowScrollUp] = useState(false);
 
