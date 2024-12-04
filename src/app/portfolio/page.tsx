@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
@@ -7,57 +8,12 @@ import Footer from '../components/Footer';
 import { Picture } from '../model/Picture';
 import { Category } from '../model/category';
 
-
-useEffect(() => {
-    // Make the GET request to the Next.js API route
-    
-    const fetchImages = async () => {
-      try {
-        const response = await fetch('/api/fetch-categories'); // Assuming your API route is at /api/images
-        if (!response.ok) {
-          throw new Error('Failed to fetch images');
-        }
-        const data = await response.json();
-        console.log(data)
-         // Set the response data in the state
-      } catch (err) {
-        console.log(err); // Handle error
-      }
-    };
-
-    fetchImages();
-  }, []);
-
-
-const categories: Category[] = [
-  {
-    title: 'Graduation',
-    pictures: [
-      { src: '/JFN.jpeg', alt: 'Graduation Picture 1', width: 300, height: 400 },
-      { src: '/JFN.jpeg', alt: 'Graduation Picture 2', width: 300, height: 400 },
-    ],
-  },
-  {
-    title: 'Wedding',
-    pictures: [
-      { src: '/JFN.jpeg', alt: 'Wedding Picture 1', width: 300, height: 400 },
-      { src: '/JFN.jpeg', alt: 'Wedding Picture 2', width: 300, height: 400 },
-    ],
-  },
-  {
-    title: 'Videos',
-    pictures: [
-      { src: '/JFN.jpeg', alt: 'Video Picture 1', width: 300, height: 400 },
-      { src: '/JFN.jpeg', alt: 'Video Picture 2', width: 300, height: 400 },
-    ],
-  },
-];
-
 const PortfolioSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activePicture, setActivePicture] = useState<Picture | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [isVisible, setIsVisible] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
 
   const openModal = (picture: Picture) => {
     setActivePicture(picture);
@@ -83,6 +39,23 @@ const PortfolioSection = () => {
       : categories.find((cat) => cat.title === selectedCategory)?.pictures || [];
 
   useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await fetch('/api/fetch-categories'); // Assuming your API route is at /api/images
+        if (!response.ok) {
+          throw new Error('Failed to fetch images');
+        }
+        const data = await response.json();
+        setCategories(data); // Set the response data in the state
+      } catch (err) {
+        console.error(err); // Handle error
+      }
+    };
+
+    fetchImages();
+  }, []); // Only run once on mount
+
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -96,7 +69,7 @@ const PortfolioSection = () => {
         style={{
           backgroundImage: 'url(/background-image.jpg)',
           backgroundSize: 'cover',
-          backgroundPosition: 'center', 
+          backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
         }}
       >
@@ -185,7 +158,7 @@ const PortfolioSection = () => {
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.8 }}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
               >
                 <button
                   className="absolute top-4 right-4 bg-black text-white rounded-full w-8 h-8 flex justify-center items-center hover:bg-gray-800"

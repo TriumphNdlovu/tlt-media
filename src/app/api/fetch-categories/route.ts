@@ -1,3 +1,4 @@
+import { Category } from '@/app/model/category';
 import { v2 as cloudinary } from 'cloudinary';
 
 // Configure Cloudinary
@@ -51,14 +52,22 @@ export async function GET(request: Request) {
       }));
     }
 
-    categorizedImages.map((category:any) => {
-      console.log(category);
-    }
-    );
+    // Create categories from the categorized images
+    let categories: Category[] = Object.keys(categorizedImages).map((folderName) => {
+      return {
+        title: folderName,
+        pictures: categorizedImages[folderName].map((image) => ({
+          src: image.url,
+          alt: image.public_id,
+          width: 300, 
+          height: 400,
+        })),
+      };
+    });
 
-    // Send the categorized images as the response
+    // Send the categories as the response
     return new Response(
-      JSON.stringify(categorizedImages),
+      JSON.stringify(categories),
       { status: 200 }
     );
   } catch (error: any) {
