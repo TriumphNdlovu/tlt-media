@@ -11,9 +11,6 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 const HomePage = () => {
 
 
-
-  
-
   const [showScrollUp, setShowScrollUp] = useState(false);
 
   const review = [
@@ -334,8 +331,8 @@ const HomePage = () => {
         </div>
         {/* Add Star Rating */}
         <div className="flex flex-row items-center mb-4">
-          <div className="mr-2">Rating:</div>  {/* Added a margin to the first div to separate them */}
-          <div className='flex'>{getStarRating(item.rating)}</div>  {/* Keeps the star rating aligned */}
+          <div className="mr-2">Rating:</div>  
+          <div className='flex'>{getStarRating(item.rating)}</div> 
         </div>
 
         <p className="text-base text-gray-800 mb-4">{item.review}</p>
