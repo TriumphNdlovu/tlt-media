@@ -81,13 +81,29 @@ const AboutPage = () => {
           emotions in every frame.”
         </p>
 
+        
+
+        <div className="text-center mt-12 sm:mt-16">
         <motion.button
+          whileHover={{
+            scale: 1.1,
+            rotate: 10,
+            opacity: 0.9,
+          }}
+          whileTap={{
+            scale: 0.95,
+            rotate: -5,
+          }}
+          transition={{
+            type: 'spring',
+            stiffness: 300,
+          }}
           onClick={() => window.location.href = '/portfolio'}
-          className="bg-yellow-400 text-black px-8 py-4 rounded-md uppercase font-bold shadow-lg hover:bg-yellow-500 transition-all"
-          whileHover={{ scale: 1.05 }}
+          className="bg-yellow-400 text-black py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-yellow-500 transition-colors"
         >
-          View My Work
+          View my Work
         </motion.button>
+  </div>
       </motion.div>
 
       {/* Photography Philosophy Section */}

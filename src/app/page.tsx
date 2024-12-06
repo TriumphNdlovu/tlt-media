@@ -9,6 +9,8 @@ import Footer from './components/Footer';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
 const HomePage = () => {
+
+
   const [showScrollUp, setShowScrollUp] = useState(false);
 
   const review = [
@@ -175,88 +177,96 @@ const HomePage = () => {
 
         {/* Portfolio Section */}
         <section className="py-16 px-6">
-          <motion.h2
+  <motion.h2
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={{
+      hidden: { opacity: 0, y: 50 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    }}
+    className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 text-yellow-400 font-serif uppercase tracking-widest"
+  >
+    Featured Work.
+  </motion.h2>
+
+  <div className="columns-1 sm:columns-2 lg:columns-4 gap-6 w-[80vw] mx-auto">
+    {[1, 2, 3, 4].map((item) => (
+      <motion.div
+        key={item}
+        whileHover={{
+          scale: 1.02,
+          translateY: -5,
+        }}
+        whileTap={{
+          scale: 0.98,
+          rotate: -3,
+        }}
+        className="relative group rounded-lg overflow-hidden cursor-pointer mb-6"
+      >
+        <Link
+          href={`/portfolio?section=${
+            item === 1
+              ? 'Graduation'
+              : item === 2
+              ? 'Wedding'
+              : item === 3
+              ? 'Matric Dance'
+              : 'Lobola'
+          }`}
+        >
+          <motion.div
+            className="relative h-60 lg:h-72 w-full overflow-hidden"
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-            }}
-            className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 text-yellow-400 font-serif uppercase tracking-widest"
+            animate="visible"
+            variants={imageVariants}
           >
-            Featured Work.
-          </motion.h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 w-[80vw] mx-auto">
-            {[1, 2, 3, 4].map((item) => (
-              <motion.div
-                key={item}
-                whileHover={{
-                  scale: 1.02,
-                  translateY: -5,
-                }}
-                whileTap={{
-                  scale: 0.98,
-                  rotate: -3,
-                }}
-                className="relative group rounded-lg overflow-hidden shadow-lg cursor-pointer"
-              >
-                <Link
-                  href={`/portfolio?section=${
-                    item === 1 ? 'Graduation' : item === 2 ? 'Wedding' : 'Videos'
-                  }`}
-                >
-                  <motion.div
-                    className="relative h-60 lg:h-72 w-full overflow-hidden"
-                    initial="hidden"
-                    animate="visible"
-                    variants={imageVariants}
-                  >
-                    <Image
-                      src={`/homescreen${item}.jpg`}
-                      alt={`Portfolio ${item}`}
-                      fill
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                      sizes="(max-width: 768px) 100vw, 25vw"
-                      loading="lazy"
-                    />
-                  </motion.div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent group-hover:from-yellow-400 group-hover:via-yellow-500/10 transition-all duration-500 flex items-end p-4">
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold uppercase text-white group-hover:text-black transition-colors duration-300">
-                      {item === 1
-                        ? 'Graduations 🎓'
-                        : item === 2
-                        ? 'Weddings 💍'
-                        : 'Videos 📹'}
-                    </h3>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+            <Image
+              src={`/homescreen${item}.jpg`}
+              alt={`Portfolio ${item}`}
+              fill
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              sizes="(max-width: 768px) 100vw, 25vw"
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent group-hover:from-yellow-400 group-hover:via-yellow-500/10 transition-all duration-500 flex items-end p-4">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold uppercase text-white group-hover:text-black transition-colors duration-300">
+              {item === 1
+                ? 'Graduations 🎓'
+                : item === 2
+                ? 'Weddings 💍'
+                : item === 3
+                ? 'Matric Dance 💃'
+                : 'Lobola 🐄'}
+            </h3>
           </div>
+        </Link>
+      </motion.div>
+    ))}
+  </div>
 
-          <div className="text-center mt-12 sm:mt-16">
-            <motion.button
-              whileHover={{
-                scale: 1.1,
-                rotate: 10,
-                opacity: 0.9,
-              }}
-              whileTap={{
-                scale: 0.95,
-                rotate: -5,
-              }}
-              transition={{
-                type: 'spring',
-                stiffness: 300,
-              }}
-              className="bg-yellow-400 text-black py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-yellow-500 transition-colors"
-            >
-              <Link href="/portfolio">View More...</Link>
-            </motion.button>
-          </div>
-        </section>
+  <div className="text-center mt-12 sm:mt-16">
+    <motion.button
+      whileHover={{
+        scale: 1.1,
+        rotate: 10,
+        opacity: 0.9,
+      }}
+      whileTap={{
+        scale: 0.95,
+        rotate: -5,
+      }}
+      transition={{
+        type: 'spring',
+        stiffness: 300,
+      }}
+      className="bg-yellow-400 text-black py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-yellow-500 transition-colors"
+    >
+      <Link href="/portfolio">View More...</Link>
+    </motion.button>
+  </div>
+</section>
+
 
         <section className="py-16 px-6 text-white">
   <motion.h2
@@ -329,8 +339,8 @@ const HomePage = () => {
         </div>
         {/* Add Star Rating */}
         <div className="flex flex-row items-center mb-4">
-          <div className="mr-2">Rating:</div>  {/* Added a margin to the first div to separate them */}
-          <div className='flex'>{getStarRating(item.rating)}</div>  {/* Keeps the star rating aligned */}
+          <div className="mr-2">Rating:</div>  
+          <div className='flex'>{getStarRating(item.rating)}</div> 
         </div>
 
         <p className="text-base text-gray-800 mb-4">{item.review}</p>
@@ -361,11 +371,6 @@ const HomePage = () => {
   </div>
 </section>
 
-
-
-
-
-        {/* Footer */}
         
       <Footer/>
       </div>
