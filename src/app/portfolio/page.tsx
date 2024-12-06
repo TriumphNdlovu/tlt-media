@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Masonry from 'react-masonry-css'; // Import Masonry
+// import Masonry from 'react-masonry-css'; // Import Masonry
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -93,11 +93,11 @@ const PortfolioSection = () => {
             </div>
 
             {/* Masonry Layout */}
-            <Masonry
+            {/* <Masonry
               breakpointCols={breakpointColumns}
               className="flex gap-4"
               columnClassName="masonry-grid_column"
-            >
+            > */}
               {filteredPictures.map((picture, index) => (
                 <motion.div
                   key={index}
@@ -121,7 +121,7 @@ const PortfolioSection = () => {
                   </div>
                 </motion.div>
               ))}
-            </Masonry>
+            {/* </Masonry> */}
           </>
         )}
 
