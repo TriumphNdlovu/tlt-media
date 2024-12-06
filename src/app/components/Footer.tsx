@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="flex justify-center items-center space-x-6 mb-4">
         {/* Facebook */}
         <a
-          href="https://www.facebook.com/yourpage"
+          href="https://www.facebook.com/TLTMediaSA/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-xl text-white hover:text-yellow-400 transition-colors"
@@ -18,7 +18,7 @@ export default function Footer() {
 
         {/* Instagram */}
         <a
-          href="https://www.instagram.com/yourprofile"
+          href="https://www.instagram.com/tlt_media.sa/?hl=en"
           target="_blank"
           rel="noopener noreferrer"
           className="text-xl text-white hover:text-yellow-400 transition-colors"
@@ -28,7 +28,7 @@ export default function Footer() {
         </a>
 
         {/* Twitter */}
-        <a
+        {/* <a
           href="https://twitter.com/yourhandle"
           target="_blank"
           rel="noopener noreferrer"
@@ -36,7 +36,7 @@ export default function Footer() {
           aria-label="Twitter"
         >
           <FaTwitter />
-        </a>
+        </a> */}
       </div>
       <p>&copy; 2024 TLT Media. All rights reserved.</p>
     </footer>
