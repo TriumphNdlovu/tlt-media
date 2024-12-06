@@ -8,6 +8,7 @@ import { Picture } from '../model/Picture';
 import { Category } from '../model/category';
 import Loader from '../components/Loader';
 import ImageModal from '../components/ImageModal'; // Import ImageModal
+import { motion } from 'framer-motion'; // Import Framer Motion
 
 const PortfolioSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,6 +58,11 @@ const PortfolioSection = () => {
     480: 1,     // 1 column for extra small screens
   };
 
+  const imageVariants = {
+    hidden: { opacity: 0, y: 50 }, // Initial state
+    visible: { opacity: 1, y: 0 }, // Animated state
+  };
+
   return (
     <>
       <Navbar />
@@ -71,21 +77,20 @@ const PortfolioSection = () => {
           <>
             {/* Filter Buttons */}
             <div className="flex flex-wrap md:flex-nowrap justify-center gap-2 md:gap-4 mb-4 px-4 overflow-x-scroll scrollbar-hide">
-            {['All', ...categories.map((cat) => cat.title)].map((cat, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedCategory(cat)}
-                className={`whitespace-nowrap px-4 py-2 text-sm md:text-base rounded-full transition-colors duration-200 ${
-                  selectedCategory === cat
-                    ? 'bg-yellow-400 text-black'
-                    : 'bg-gray-700 text-white hover:bg-gray-600'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-</div>
-
+              {['All', ...categories.map((cat) => cat.title)].map((cat, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`whitespace-nowrap px-4 py-2 text-sm md:text-base rounded-full transition-colors duration-200 ${
+                    selectedCategory === cat
+                      ? 'bg-yellow-400 text-black'
+                      : 'bg-gray-700 text-white hover:bg-gray-600'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
 
             {/* Masonry Layout */}
             <Masonry
@@ -94,10 +99,14 @@ const PortfolioSection = () => {
               columnClassName="masonry-grid_column"
             >
               {filteredPictures.map((picture, index) => (
-                <div
+                <motion.div
                   key={index}
                   className="relative overflow-hidden rounded-lg group cursor-pointer"
                   onClick={() => openModal(picture)}
+                  initial="hidden"
+                  animate="visible"
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  variants={imageVariants}
                 >
                   <Image
                     src={picture.src}
@@ -110,7 +119,7 @@ const PortfolioSection = () => {
                   <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity">
                     <p className="text-white font-serif text-lg">View</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </Masonry>
           </>

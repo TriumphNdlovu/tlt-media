@@ -56,6 +56,7 @@ const BookPage = () => {
 };
 
 
+
   return (
     <div className="bg-black text-offwhite font-serif">
       {/* Navbar */}
