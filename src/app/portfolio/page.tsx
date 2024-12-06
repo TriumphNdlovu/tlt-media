@@ -70,19 +70,22 @@ const PortfolioSection = () => {
         ) : (
           <>
             {/* Filter Buttons */}
-            <div className="flex justify-center gap-4 mb-8">
-              {['All', ...categories.map((cat) => cat.title)].map((cat, index) => (
-                <button
-                  key={index}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-full ${
-                    selectedCategory === cat ? 'bg-yellow-400 text-black' : 'bg-gray-700 text-white'
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
+            <div className="flex flex-wrap md:flex-nowrap justify-center gap-2 md:gap-4 mb-4 px-4 overflow-x-scroll scrollbar-hide">
+            {['All', ...categories.map((cat) => cat.title)].map((cat, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedCategory(cat)}
+                className={`whitespace-nowrap px-4 py-2 text-sm md:text-base rounded-full transition-colors duration-200 ${
+                  selectedCategory === cat
+                    ? 'bg-yellow-400 text-black'
+                    : 'bg-gray-700 text-white hover:bg-gray-600'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+</div>
+
 
             {/* Masonry Layout */}
             <Masonry
