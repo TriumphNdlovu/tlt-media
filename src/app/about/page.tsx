@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -23,7 +22,7 @@ const AboutPage = () => {
   }, []);
 
   return (
-    <motion.section
+    <section
       className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white"
       style={{
         backgroundImage: 'url(/background-image.jpg)',
@@ -31,48 +30,26 @@ const AboutPage = () => {
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
       }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
     >
       <Navbar />
 
       {/* Hero Section */}
-      <motion.div
-        className="flex flex-col items-center justify-center px-8 py-32 text-center"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <motion.h1
-          className="text-4xl sm:text-5xl font-serif text-yellow-400 uppercase mb-6"
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
+      <div className="flex flex-col items-center justify-center px-8 py-32 text-center opacity-0 animate-fadeIn">
+        <h1 className="text-4xl sm:text-5xl font-serif text-yellow-400 uppercase mb-6">
           About Me.
-        </motion.h1>
+        </h1>
 
         {/* Profile Picture Section */}
-        <motion.div
-          className="flex flex-col items-center mt-4 mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 1 }}
-        >
-          <motion.div
-            className="relative w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] rounded-full overflow-hidden mb-6 border-4 border-yellow-400 shadow-xl"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-          >
+        <div className="flex flex-col items-center mt-4 mb-8 opacity-0 animate-fadeIn delay-200">
+          <div className="relative w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] rounded-full overflow-hidden mb-6 border-4 border-yellow-400 shadow-xl hover:scale-105 transition-transform duration-300">
             <Image
               src="/logo.png"
               alt="Photographer's Profile Picture"
               fill
               className="object-cover"
             />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-6">
           ”I’m <span className="text-yellow-400">Hlogi</span>, a passionate photographer with over{' '}
@@ -81,60 +58,31 @@ const AboutPage = () => {
           emotions in every frame.”
         </p>
 
-        
-
         <div className="text-center mt-12 sm:mt-16">
-        <motion.button
-          whileHover={{
-            scale: 1.1,
-            rotate: 10,
-            opacity: 0.9,
-          }}
-          whileTap={{
-            scale: 0.95,
-            rotate: -5,
-          }}
-          transition={{
-            type: 'spring',
-            stiffness: 300,
-          }}
-          onClick={() => window.location.href = '/portfolio'}
-          className="bg-yellow-400 text-black py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-yellow-500 transition-colors"
-        >
-          View my Work
-        </motion.button>
-  </div>
-      </motion.div>
+          <button
+            onClick={() => window.location.href = '/portfolio'}
+            className="bg-yellow-400 text-black py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-yellow-500 transition-colors"
+          >
+            View my Work
+          </button>
+        </div>
+      </div>
 
       {/* Photography Philosophy Section */}
-      <motion.div
-        className="text-center py-12 px-8 mt-12"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 1 }}
-      >
+      <div className="text-center py-12 px-8 mt-12 opacity-0 animate-fadeIn delay-400">
         <h2 className="text-3xl sm:text-4xl font-serif text-yellow-400 mb-6">
           My Photography Philosophy
         </h2>
-        <motion.div
-          className="max-w-3xl mx-auto p-6 rounded-md"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.3 }}
-        >
+        <div className="max-w-3xl mx-auto p-6 rounded-md hover:scale-105 transition-transform duration-300">
           <p className="text-lg sm:text-xl italic text-gray-300">
             “Photography is the art of frozen time. It’s the ability to store emotion and feelings
             within a frame.”
           </p>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
       {/* Fun Fact Section */}
-      <motion.div
-        className="text-center py-12 px-8 mt-12"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 1 }}
-      >
+      <div className="text-center py-12 px-8 mt-12 opacity-0 animate-fadeIn delay-600">
         <h3 className="text-2xl sm:text-3xl font-serif text-yellow-400 mb-6">
           A Fun Fact About Me
         </h3>
@@ -142,15 +90,10 @@ const AboutPage = () => {
           I started my photography journey with an old film camera my grandfather gifted me, and it
           ignited my love for capturing stories that transcend time.
         </p>
-      </motion.div>
+      </div>
 
       {/* Contact and Social Media Links Section */}
-      <motion.div
-        className="text-center py-16 px-8 mt-12"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 1 }}
-      >
+      <div className="text-center py-16 px-8 mt-12 opacity-0 animate-fadeIn delay-800">
         <h3 className="text-2xl sm:text-3xl font-serif text-yellow-400 mb-6">
           Contact Me
         </h3>
@@ -190,22 +133,19 @@ const AboutPage = () => {
             X (formally Twitter)
           </a>
         </div>
-      </motion.div>
+      </div>
 
       {/* Scroll-to-Top Button */}
       {showScrollTop && (
-        <motion.button
+        <button
           onClick={scrollToTop}
           className="fixed bottom-8 right-8 bg-yellow-400 text-black p-3 rounded-full shadow-lg hover:bg-yellow-500 transition-all"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
         >
           ↑
-        </motion.button>
+        </button>
       )}
       <Footer />
-    </motion.section>
+    </section>
   );
 };
 

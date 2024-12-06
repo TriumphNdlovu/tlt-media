@@ -1,8 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Navbar from '../components/Navbar';
 import { useState } from 'react';
+import Navbar from '../components/Navbar';
 
 const BookPage = () => {
   const [formData, setFormData] = useState({
@@ -17,11 +16,6 @@ const BookPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState('');
 
-  const textVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -31,31 +25,29 @@ const BookPage = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-  setFormStatus('Submitting...');
+    e.preventDefault();
+    setIsSubmitting(true);
+    setFormStatus('Submitting...');
 
-  try {
-    const response = await fetch('/api/sendEmail', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    if (response.ok) {
-      setFormStatus('Booking request submitted successfully!');
-      setFormData({ name: '', email: '', phone: '', message: '', date: '' ,time: ''}); // Reset form
-    } else {
-      setFormStatus('Failed to submit booking. Please try again.');
+      if (response.ok) {
+        setFormStatus('Booking request submitted successfully!');
+        setFormData({ name: '', email: '', phone: '', message: '', date: '', time: '' }); // Reset form
+      } else {
+        setFormStatus('Failed to submit booking. Please try again.');
+      }
+    } catch (error) {
+      setFormStatus('Error connecting to the server.');
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (error) {
-    setFormStatus('Error connecting to the server.');
-  } finally {
-    setIsSubmitting(false);
-  }
-};
-
-
+  };
 
   return (
     <div className="bg-black text-offwhite font-serif">
@@ -64,14 +56,9 @@ const BookPage = () => {
 
       {/* Book a Session Section */}
       <section className="py-24 sm:py-32 px-6">
-        <motion.h2
-          initial="hidden"
-          animate="visible"
-          variants={textVariants}
-          className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 text-yellow-400 font-serif uppercase tracking-widest"
-        >
+        <h2 className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 text-yellow-400 font-serif uppercase tracking-widest">
           Check My Availability and Book a Session
-        </motion.h2>
+        </h2>
 
         <div className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12">
           <iframe
@@ -84,19 +71,12 @@ const BookPage = () => {
         </div>
 
         {/* Booking Form */}
-          <h3 className="text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-4 text-center">
-            Book a Session
-          </h3>
-          
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={textVariants}
-          // className="bg-gray-800 p-8 rounded-xl shadow-xl max-w-7xl text-center"
-          className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12"
-        >
+        <h3 className="text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-4 text-center">
+          Book a Session
+        </h3>
 
-          <form onSubmit={handleSubmit} className="space-y-6 ">
+        <div className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-1 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm sm:text-lg text-white mb-2">Full Name</label>
@@ -151,6 +131,7 @@ const BookPage = () => {
                 />
               </div>
             </div>
+
             <div>
               <label htmlFor="time" className="block text-sm sm:text-lg text-white mb-2">Preferred Session Time</label>
               <input
@@ -163,6 +144,7 @@ const BookPage = () => {
                 required
               />
             </div>
+
             <div>
               <label htmlFor="message" className="block text-sm sm:text-lg text-white mb-2">Message</label>
               <textarea
@@ -191,7 +173,7 @@ const BookPage = () => {
               {formStatus}
             </div>
           )}
-        </motion.div>
+        </div>
       </section>
 
       {/* Footer */}

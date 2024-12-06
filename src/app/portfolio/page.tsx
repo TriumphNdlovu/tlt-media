@@ -1,14 +1,12 @@
 'use client';
 import { useState, useEffect } from 'react';
-// import Masonry from 'react-masonry-css'; // Import Masonry
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Picture } from '../model/Picture';
 import { Category } from '../model/category';
 import Loader from '../components/Loader';
-import ImageModal from '../components/ImageModal'; // Import ImageModal
-import { motion } from 'framer-motion'; // Import Framer Motion
+import ImageModal from '../components/ImageModal';
 
 const PortfolioSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -51,18 +49,6 @@ const PortfolioSection = () => {
     fetchImages();
   }, []);
 
-  const breakpointColumns = {
-    default: 4, // Default columns
-    1024: 3,    // 3 columns for medium screens
-    768: 2,     // 2 columns for small screens
-    480: 1,     // 1 column for extra small screens
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, y: 50 }, // Initial state
-    visible: { opacity: 1, y: 0 }, // Animated state
-  };
-
   return (
     <>
       <Navbar />
@@ -92,21 +78,13 @@ const PortfolioSection = () => {
               ))}
             </div>
 
-            {/* Masonry Layout */}
-            {/* <Masonry
-              breakpointCols={breakpointColumns}
-              className="flex gap-4"
-              columnClassName="masonry-grid_column"
-            > */}
+            {/* Masonry Layout with Tailwind Columns */}
+            <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6">
               {filteredPictures.map((picture, index) => (
-                <motion.div
+                <div
                   key={index}
-                  className="relative overflow-hidden rounded-lg group cursor-pointer"
+                  className="relative overflow-hidden rounded-lg mb-6 group cursor-pointer"
                   onClick={() => openModal(picture)}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  variants={imageVariants}
                 >
                   <Image
                     src={picture.src}
@@ -119,9 +97,9 @@ const PortfolioSection = () => {
                   <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity">
                     <p className="text-white font-serif text-lg">View</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            {/* </Masonry> */}
+            </div>
           </>
         )}
 

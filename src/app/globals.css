@@ -39,3 +39,17 @@
 .masonry-grid_column > div {
   margin-bottom: 1rem; /* Adjust spacing between items */
 }
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out forwards;
+}
