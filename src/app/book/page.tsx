@@ -63,7 +63,7 @@ const BookPage = () => {
         <div className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12">
           <iframe
             src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Africa%2FJohannesburg&showPrint=0&title=TLT%20BOOKING%20SLOTS&src=dGVlZWtzaG9wQGdtYWlsLmNvbQ&src=ZW4uc2EjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%230B8043"
-            style={{ border: '0', width: '100%', height: '600px' }}
+            style={{ border: '0', width: '100%', height: '600px', borderRadius: '20px' }}
             frameBorder="0"
             scrolling="no"
             title="Google Calendar"
@@ -72,8 +72,11 @@ const BookPage = () => {
 
         {/* Booking Form */}
         <h3 className="text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-4 text-center">
-          Book a Session
+          Request a Slot 
         </h3>
+        <p className="text-center text-lg text-white mb-12">
+          please note that this is a request form and not a confirmation of booking. We will get back to you to confirm your booking and more info.
+        </p>
 
         <div className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12">
           <form onSubmit={handleSubmit} className="space-y-6">
