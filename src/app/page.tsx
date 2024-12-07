@@ -146,8 +146,8 @@ const HomePage = () => {
                       : item === 2
                       ? 'Wedding'
                       : item === 3
-                      ? 'Matric Dance'
-                      : 'Lobola'
+                      ? 'Matric dance'
+                      : 'Brand shoot'
                   }`}
                 >
                   <div className="relative h-60 lg:h-72 w-full overflow-hidden">
@@ -167,7 +167,7 @@ const HomePage = () => {
                         ? 'Weddings 💍'
                         : item === 3
                         ? 'Matric Dance 💃'
-                        : 'Lobola 🐄'}
+                        : 'brand Shoot 👕'}
                     </h3>
                   </div>
                 </Link>

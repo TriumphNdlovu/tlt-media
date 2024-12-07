@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation'; // Import useRouter
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -14,6 +15,8 @@ const PortfolioSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const router = useRouter(); // Initialize useRouter
 
   const openModal = (picture: Picture) => {
     setActivePicture(picture);
@@ -48,6 +51,17 @@ const PortfolioSection = () => {
 
     fetchImages();
   }, []);
+
+  useEffect(() => {
+    // Get query parameters
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get('section');
+
+    // Update selected category if the section exists
+    if (section) {
+      setSelectedCategory(section);
+    }
+  }, [router.refresh]); // Dependency to re-run when query parameters change
 
   return (
     <>
