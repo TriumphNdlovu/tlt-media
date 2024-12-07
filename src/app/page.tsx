@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Footer from './components/Footer';
-import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
+import { FaStar, FaStarHalfAlt, FaRegStar, FaArrowUp } from 'react-icons/fa';
 
 const HomePage = () => {
 
@@ -297,24 +297,25 @@ const HomePage = () => {
         </a>
       </div>
 
-      {/* Commercial */}
+      {/* Matric Dance*/}
       <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
         <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
-          🛍️ Commercial
+          💃 Matric Dance
         </h3>
         <p className="text-gray-800 text-sm mb-4">
-          Elevate your brand with high-quality commercial photography that showcases your products and services.
+          Make your matric dance unforgettable with glamorous photography that captures your style and spirit.
         </p>
         <ul className="text-gray-700 text-sm mb-4 space-y-1">
-          <li>✨ Product and lifestyle shoots</li>
-          <li>✨ Social media ready images</li>
-          <li>✨ Packages for businesses of all sizes</li>
+          <li>✨ Solo and group shots available</li>
+          <li>✨ On-location venue photos</li>
+          <li>✨ Digital or printed album options</li>
         </ul>
-        <p className="text-black font-bold">Starting at R7,000</p>
+        <p className="text-black font-bold">Starting at R2,500</p>
         <a href="/book" className="mt-4 inline-block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 text-center">
           Request session
         </a>
       </div>
+
 
       {/* Other*/}
       <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
@@ -380,9 +381,9 @@ const HomePage = () => {
       {showScrollUp && (
         <div
           onClick={scrollToTop}
-          className="fixed bottom-16 right-6 bg-yellow-400 text-black p-4 rounded-full cursor-pointer shadow-lg"
+          className="fixed bottom-16 right-6 bg-yellow-400 text-black p-4 rounded-full cursor-pointer shadow-lg z-50 hover:bg-yellow-500 transition-all"
         >
-          ↑
+          <FaArrowUp />
         </div>
       )}
     </div>

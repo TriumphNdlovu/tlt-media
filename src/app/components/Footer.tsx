@@ -3,14 +3,14 @@ import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaTiktok } from "react-
 
 export default function Footer() {
   return (
-    <footer className="py-8 text-white text-center bg-black">
+    <footer className="py-8 text-black text-center bg-yellow-500">
       <div className="flex justify-center items-center space-x-6 mb-4">
         {/* Facebook */}
         <a
           href="https://www.facebook.com/people/TLT-media/100070832335249/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xl text-white hover:text-yellow-400 transition-colors"
+          className="text-xl text-balck hover:text-white transition-colors"
           aria-label="Facebook"
         >
           <FaFacebook />
@@ -21,7 +21,7 @@ export default function Footer() {
           href="https://www.instagram.com/tlt_media_021/?hl=en"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xl text-white hover:text-yellow-400 transition-colors"
+          className="text-xl text-balck hover:text-white transition-colors"
           aria-label="Instagram"
         >
           <FaInstagram />
@@ -31,7 +31,7 @@ export default function Footer() {
           href="https://www.tiktok.com/@tltmedia34009/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xl text-white hover:text-yellow-400 transition-colors"
+          className="text-xl text-balck hover:text-white transition-colors"
           aria-label="Tik Tok"
         >
           <FaTiktok />
@@ -48,7 +48,8 @@ export default function Footer() {
           <FaTwitter />
         </a> */}
       </div>
-      <p>&copy; 2024 TLT Media. All rights reserved.</p>
+      <p>&copy; 2025 TLT Media. All rights reserved.</p>
+      <p>Designed by <a href="https://www.linkedin.com/in/triumph-ndlovu-425b73274/" target="_blank" rel="noopener noreferrer" className="text-black hover:text-white transition-colors underline">Triumph</a></p>
     </footer>
   );
 }
