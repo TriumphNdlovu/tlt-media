@@ -62,7 +62,7 @@ const BookPage = () => {
 
         <div className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12">
           <iframe
-            src="https://calendar.google.com/calendar/embed?src=teeekshop%40gmail.com&ctz=Africa%2FJohannesburg"
+            src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Africa%2FJohannesburg&showPrint=0&title=TLT%20BOOKING%20SLOTS&src=dGVlZWtzaG9wQGdtYWlsLmNvbQ&src=ZW4uc2EjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%230B8043"
             style={{ border: '0', width: '100%', height: '600px' }}
             frameBorder="0"
             scrolling="no"
