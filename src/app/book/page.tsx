@@ -70,16 +70,50 @@ const BookPage = () => {
           />
         </div>
 
+        {/* Price List */}
+          <h3 className="text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-8 text-center">
+            Price List
+          </h3>
+          <p className="text-center text-lg text-white mb-12">
+            These are the standard rates for different types of photography sessions. Please note that these are starting prices and may vary based on the scope of work.
+          </p>
+        <section className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12">
+
+          <ul className="space-y-6 text-lg text-white">
+            <li className="flex justify-between border-b pb-4">
+              <span>Graduations Photography</span>
+              <span className="font-bold text-yellow-400">R500 / Hour</span>
+            </li>
+            <li className="flex justify-between border-b pb-4">
+              <span>Event Photography</span>
+              <span className="font-bold text-yellow-400">R500 / Hour</span>
+            </li>
+            <li className="flex justify-between border-b pb-4">
+              <span>Brand Photography</span>
+              <span className="font-bold text-yellow-400">R800 / Hour</span>
+            </li>
+            <li className="flex justify-between border-b pb-4">
+              <span>Wedding Photography</span>
+              <span className="font-bold text-yellow-400">R10 000 / Day</span>
+            </li>
+            <li className="flex justify-between border-b pb-4">
+              <span>Other</span>
+              <span className="font-bold text-yellow-400">Contact for Quote</span>
+            </li>
+          </ul>
+        </section>
+
         {/* Booking Form */}
         <h3 className="text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-4 text-center">
           Request a Slot 
         </h3>
         <p className="text-center text-lg text-white mb-12">
-          please note that this is a request form and not a confirmation of booking. We will get back to you to confirm your booking and more info.
+          Please note that this is a request form and not a confirmation of booking. We will get back to you to confirm your booking and more info.
         </p>
 
         <div className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12">
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Form fields here */}
             <div className="grid grid-cols-1 sm:grid-cols-1 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm sm:text-lg text-white mb-2">Full Name</label>

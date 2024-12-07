@@ -34,9 +34,10 @@ const AboutPage = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="flex flex-col items-center justify-center px-8 py-32 text-center opacity-0 animate-fadeIn">
+      <section className="flex flex-col items-center justify-center  text-center  animate-fadeIn  bg-opacity-75 px-10 py-10">
+      <div className="flex flex-col items-center justify-center text-center opacity-0 animate-fadeIn w-full">
         <h1 className="text-4xl sm:text-5xl font-serif text-yellow-400 uppercase mb-6">
-          About Me.
+          About.
         </h1>
 
         {/* Profile Picture Section */}
@@ -66,74 +67,11 @@ const AboutPage = () => {
             View my Work
           </button>
         </div>
-      </div>
 
-      {/* Photography Philosophy Section */}
-      <div className="text-center py-12 px-8 mt-12 opacity-0 animate-fadeIn delay-400">
-        <h2 className="text-3xl sm:text-4xl font-serif text-yellow-400 mb-6">
-          My Photography Philosophy
-        </h2>
-        <div className="max-w-3xl mx-auto p-6 rounded-md hover:scale-105 transition-transform duration-300">
-          <p className="text-lg sm:text-xl italic text-gray-300">
-            “Photography is the art of frozen time. It’s the ability to store emotion and feelings
-            within a frame.”
-          </p>
+        {/* Services Section */}
         </div>
-      </div>
 
-      {/* Fun Fact Section */}
-      <div className="text-center py-12 px-8 mt-12 opacity-0 animate-fadeIn delay-600">
-        <h3 className="text-2xl sm:text-3xl font-serif text-yellow-400 mb-6">
-          A Fun Fact About Me
-        </h3>
-        <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-          I started my photography journey with an old film camera my grandfather gifted me, and it
-          ignited my love for capturing stories that transcend time.
-        </p>
-      </div>
-
-      {/* Contact and Social Media Links Section */}
-      <div className="text-center py-16 px-8 mt-12 opacity-0 animate-fadeIn delay-800">
-        <h3 className="text-2xl sm:text-3xl font-serif text-yellow-400 mb-6">
-          Contact Me
-        </h3>
-        <p className="text-lg sm:text-xl text-gray-300 mb-6">
-          You can reach me via email or through my social media channels for inquiries and bookings.
-        </p>
-
-        {/* Contact Information */}
-        <p className="text-lg sm:text-xl text-gray-300 mb-6">
-          Email: <a href="mailto:contact@hlogi.com" className="text-yellow-400 hover:underline">contact@hlogi.com</a>
-        </p>
-
-        {/* Social Media Links */}
-        <div className="flex justify-center gap-8 mb-8">
-          <a
-            href="https://www.instagram.com/hlogi_photography"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-yellow-400 hover:text-white"
-          >
-            Instagram
-          </a>
-          <a
-            href="https://www.facebook.com/hlogi.photography"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-yellow-400 hover:text-white"
-          >
-            Facebook
-          </a>
-          <a
-            href="https://www.twitter.com/hlogi_photo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-yellow-400 hover:text-white"
-          >
-            X (formally Twitter)
-          </a>
-        </div>
-      </div>
+      </section>
 
       {/* Scroll-to-Top Button */}
       {showScrollTop && (

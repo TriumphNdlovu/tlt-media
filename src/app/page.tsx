@@ -184,9 +184,9 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section className="py-16 px-6 text-white">
+        <section className="py-16 px-6 text-white w-[100vw]">
           <h2 className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 font-serif uppercase tracking-widest text-yellow-400">
-            About TLT Media
+            TLT MEDIA.
           </h2>
 
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -208,8 +208,139 @@ const HomePage = () => {
                 corporate events, and creative video projects.”
               </p>
             </div>
+
+
+            
           </div>
-        </section>
+      </section>
+
+        <section className="py-16 px-6 text-black ">
+  <h2 className="text-3xl text-yellow-500 sm:text-4xl md:text-5xl text-center mb-12 font-serif uppercase tracking-widest">
+    Services.
+  </h2>
+  <div className="max-w-7xl mx-auto mt-12 sm:mt-16">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full">
+      
+      {/* Weddings */}
+      <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
+          💍 Weddings
+        </h3>
+        <p className="text-gray-800 text-sm mb-4">
+          Capture the magic of your special day with timeless photography that tells your unique love story.
+        </p>
+        <ul className="text-gray-700 text-sm mb-4 space-y-1">
+          <li>✨ Coverage for ceremonies & receptions</li>
+          <li>✨ Pre-wedding couple shoots</li>
+          <li>✨ Full-resolution edited images</li>
+        </ul>
+        <p className="text-black font-bold">Starting at R5,000</p>
+        <a href="/book" className="mt-4 inline-block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 text-center">
+          Request session
+        </a>
+      </div>
+
+      {/* Graduations */}
+      <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
+          🎓 Graduations
+        </h3>
+        <p className="text-gray-800 text-sm mb-4">
+          Celebrate your academic achievements with professional photography that captures your pride and joy.
+        </p>
+        <ul className="text-gray-700 text-sm mb-4 space-y-1">
+          <li>✨ Solo and group shots available</li>
+          <li>✨ On-location campus photos</li>
+          <li>✨ Digital or printed album options</li>
+        </ul>
+        <p className="text-black font-bold">Starting at R1,500</p>
+        <a href="/book" className="mt-4 inline-block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 text-center">
+          Request session
+        </a>
+      </div>
+
+      {/* Events */}
+      <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
+          🎉 Events
+        </h3>
+        <p className="text-gray-800 text-sm mb-4">
+          From corporate functions to birthday parties, I offer event photography services that capture every moment.
+        </p>
+        <ul className="text-gray-700 text-sm mb-4 space-y-1">
+          <li>✨ Flexible hourly packages</li>
+          <li>✨ Professional lighting setup</li>
+          <li>✨ High-quality event coverage</li>
+        </ul>
+        <p className="text-black font-bold">Starting at R3,000</p>
+        <a href="/book" className="mt-4 inline-block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 text-center">
+          Request session
+        </a>
+      </div>
+
+      {/* Portraits */}
+      <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
+          📸 Portraits
+        </h3>
+        <p className="text-gray-800 text-sm mb-4">
+          Whether it’s professional headshots or family portraits, I create stunning images that reflect your personality.
+        </p>
+        <ul className="text-gray-700 text-sm mb-4 space-y-1">
+          <li>✨ Studio or outdoor shoots</li>
+          <li>✨ Customized creative themes</li>
+          <li>✨ Quick editing turnaround</li>
+        </ul>
+        <p className="text-black font-bold">Starting at R2,000</p>
+        <a href='/book' className="mt-4 inline-block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 text-center">
+          Request session
+        </a>
+      </div>
+
+      {/* Commercial */}
+      <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
+          🛍️ Commercial
+        </h3>
+        <p className="text-gray-800 text-sm mb-4">
+          Elevate your brand with high-quality commercial photography that showcases your products and services.
+        </p>
+        <ul className="text-gray-700 text-sm mb-4 space-y-1">
+          <li>✨ Product and lifestyle shoots</li>
+          <li>✨ Social media ready images</li>
+          <li>✨ Packages for businesses of all sizes</li>
+        </ul>
+        <p className="text-black font-bold">Starting at R7,000</p>
+        <a href="/book" className="mt-4 inline-block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 text-center">
+          Request session
+        </a>
+      </div>
+
+      {/* Other*/}
+      <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
+          🎨 Other
+        </h3>
+        <p className="text-gray-800 text-sm mb-4">
+          Have a unique project in mind? Contact me for a custom quote on your photography or videography needs.
+        </p>
+        <ul className="text-gray-700 text-sm mb-4 space-y-1">
+          <li>✨ Customized packages available</li>
+          <li>✨ Special requests welcome</li>
+          <li>✨ Flexible pricing options</li>
+        </ul>
+        <p className="text-black font-bold">Contact for Quote</p>
+        <a href="/book" className="mt-4 inline-block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 text-center">
+          Request session
+        </a>
+      </div>
+     
+    </div>
+  </div>
+</section>
+
+
+
 
         <section className="py-16 px-6 bg-yellow-500 text-black">
           <h2 className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 font-serif uppercase tracking-widest">

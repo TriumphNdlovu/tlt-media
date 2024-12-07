@@ -51,7 +51,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold uppercase tracking-wider flex items-center">
           <Image src="/logo.png" alt="TLT Media logo" width={50} height={50} className="rounded" />
-          <span className="ml-2">TLTMedia.</span>
+          <span className="ml-2 hidden lg:block">TLTMedia.</span>
         </Link>
 
         {/* Desktop Menu */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaTiktok } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="flex justify-center items-center space-x-6 mb-4">
         {/* Facebook */}
         <a
-          href="https://www.facebook.com/TLTMediaSA/"
+          href="https://www.facebook.com/people/TLT-media/100070832335249/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-xl text-white hover:text-yellow-400 transition-colors"
@@ -18,13 +18,23 @@ export default function Footer() {
 
         {/* Instagram */}
         <a
-          href="https://www.instagram.com/tlt_media.sa/?hl=en"
+          href="https://www.instagram.com/tlt_media_021/?hl=en"
           target="_blank"
           rel="noopener noreferrer"
           className="text-xl text-white hover:text-yellow-400 transition-colors"
           aria-label="Instagram"
         >
           <FaInstagram />
+        </a>
+        {/*Tik Tok*/}
+        <a
+          href="https://www.tiktok.com/@tltmedia34009/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xl text-white hover:text-yellow-400 transition-colors"
+          aria-label="Tik Tok"
+        >
+          <FaTiktok />
         </a>
 
         {/* Twitter */}
