@@ -5,7 +5,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const { name, email, phone, date, time, message } = body;
+    const { name, email, phone, category, date, time, message } = body;
 
     // Parse date and time
     const year = new Date(date).getFullYear();
@@ -57,6 +57,7 @@ export async function POST(request: Request) {
         Name: ${name}
         Email: ${email}
         Phone: ${phone}
+        Category: ${category}
         Preferred Date: ${date}
         Preferred Time: ${time}
         Message: ${message}

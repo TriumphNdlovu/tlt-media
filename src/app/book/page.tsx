@@ -9,6 +9,7 @@ const BookPage = () => {
     name: '',
     email: '',
     phone: '',
+    category: '',
     message: '',
     date: '',
     time: '',
@@ -20,13 +21,14 @@ const BookPage = () => {
     name: '',
     email: '',
     phone: '',
+    category: '',
     date: '',
     time: '',
   });
 
   const [showScrollUp, setShowScrollUp] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -64,7 +66,7 @@ const BookPage = () => {
 
       if (response.ok) {
         setFormStatus('Booking request submitted successfully!');
-        setFormData({ name: '', email: '', phone: '', message: '', date: '', time: '' }); // Reset form
+        setFormData({ name: '', email: '', phone: '', category: '', message: '', date: '', time: '' }); // Reset form
       } else {
         setFormStatus('Failed to submit booking. Please try again.');
       }
@@ -217,6 +219,22 @@ const BookPage = () => {
                   className="w-full p-3 text-white rounded-md border border-white bg-black"
                 />
                 {formErrors.phone && <p className="text-red-500 text-sm">{formErrors.phone}</p>}
+              </div>
+
+              <div>
+                <label htmlFor="category" className="block text-sm sm:text-lg text-white mb-2">Category</label>
+                <select
+                  id="category"
+                  name="category"
+                  value={formData.category}
+                  onChange={handleInputChange}
+                  className="w-full p-3 text-white rounded-md border border-white bg-black"
+                >
+                  <option value="">Select a category</option>
+                  <option value="Photography">Photography</option>
+                  <option value="Videography">Videography</option>
+                  <option value="Both">Both</option>
+                </select>
               </div>
 
               <div>
