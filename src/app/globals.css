@@ -41,15 +41,43 @@
 }
 
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
 .animate-fadeIn {
   animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Animation for fading in elements */
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.fade-in-delayed {
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 0.5s;
+  opacity: 0; /* Ensure it's hidden until animation runs */
+}
+
+/* Bounce animation for scroll indicator */
+.animate-bounce {
+  animation: bounce 1.5s infinite;
 }

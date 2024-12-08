@@ -166,44 +166,73 @@ const HomePage = () => {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Overlay for better contrast */}
-      <div className="absolute inset-0 bg-black/50 z-0"></div>
+      
 
       <div className="relative z-10">
         {/* Navbar */}
         <Navbar />
 
         {/* Hero Section */}
-        <section className="flex justify-center items-center text-center py-24 sm:py-32 px-6 min-h-screen">
-          <div className="text-center text-white">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase tracking-widest text-offwhite mb-6 text-yellow-400">
-              Capture Life Through My Lens
-            </h1>
-            <p className="text-xl sm:text-2xl md:text-3xl mt-6 mb-8 font-light max-w-xl mx-auto text-offwhite opacity-80">
-              Photography that tells a story. Simple. Bold. Timeless.
-            </p>
+        <section 
+  className="relative flex justify-center items-center text-center py-24 sm:py-32 px-6 min-h-screen bg-cover bg-center"
+>
+  
 
-            <div className="flex justify-center gap-4 sm:gap-6">
-              <Link href="/portfolio">
-                <button
-                  className="bg-yellow-400 text-black py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-yellow-500 transition-colors"
-                >
-                  View Portfolio
-                </button>
-              </Link>
-              <Link href="/book">
-                <button
-                  className="bg-yellow-400 text-black py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-yellow-500 transition-colors"
-                >
-                  Book a Session
-                </button>
-              </Link>
-            </div>
-          </div>
-        </section>
+  {/* Content */}
+  <div className="relative text-center text-white max-w-3xl z-10 bg-black bg-opacity-90">
+    <h1
+      className="text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase tracking-widest text-yellow-400 mb-6 fade-in-delayed"
+    >
+      Welcome to TLT Media.
+    </h1>
+    <p
+      className="text-xl sm:text-2xl md:text-3xl mt-6 mb-8 font-light max-w-xl mx-auto text-gray-200 opacity-90 fade-in-delayed"
+    >
+      Transforming moments into timeless stories through bold, creative photography and media solutions.
+    </p>
+
+    {/* Buttons */}
+    <div className="flex justify-center gap-4 sm:gap-6 fade-in-delayed">
+      <Link href="/portfolio">
+        <button
+          className="bg-yellow-400 text-black py-3 px-8 rounded-lg text-lg font-bold shadow-md transform transition-all duration-300 hover:bg-yellow-500 hover:scale-105"
+        >
+          View Portfolio
+        </button>
+      </Link>
+      <Link href="/book">
+        <button
+          className="bg-yellow-400 text-black py-3 px-8 rounded-lg text-lg font-bold shadow-md transform transition-all duration-300 hover:bg-yellow-500 hover:scale-105"
+        >
+          Book a Session
+        </button>
+      </Link>
+    </div>
+  </div>
+
+  {/* Scroll Indicator */}
+  <div className="absolute bottom-6 inset-x-0 text-white fade-in text-center">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-6 h-6 mx-auto animate-bounce text-yellow-500"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M19 9l-7 7-7-7"
+    />
+  </svg>
+  <p className="mt-2 text-sm uppercase">Scroll Down</p>
+</div>
+
+</section>
 
         {/* Portfolio Section */}
-        <section className="py-16 px-6">
+        <section className="py-16 px-6 bg-white bg-opacity-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 text-yellow-400 font-serif uppercase tracking-widest">
             Featured Work.
           </h2>
@@ -252,14 +281,15 @@ const HomePage = () => {
 
           <div className="text-center mt-12 sm:mt-16">
             <button
-              className="bg-yellow-400 text-black py-3 px-8 rounded-lg text-lg font-bold shadow-md hover:bg-yellow-500 transition-colors"
+              className="bg-yellow-400 text-black py-3 px-8 animate-bounce rounded-lg text-lg font-bold shadow-md hover:bg-yellow-500 transition-colors fade-in"
+
             >
               <Link href="/portfolio">View More...</Link>
             </button>
           </div>
         </section>
 
-        <section className="py-16 px-6 text-white w-[100vw]">
+        <section className="py-16 px-6 text-white w-[100vw] bg-white bg-opacity-10 mt-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 font-serif uppercase tracking-widest text-yellow-400">
             TLT MEDIA.
           </h2>
@@ -289,18 +319,22 @@ const HomePage = () => {
           </div>
       </section>
 
-        <section className="py-16 px-6 text-black ">
-  <h2 className="text-3xl text-yellow-500 sm:text-4xl md:text-5xl text-center mb-12 font-serif uppercase tracking-widest">
+        <section className="text-black bg-white bg-opacity-10 my-10">
+  <h2 className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 pt-12 font-serif uppercase tracking-widest text-yellow-500">
     Services.
   </h2>
-  <div className="max-w-7xl mx-auto mt-12 sm:mt-16">
-      
-      {/* Weddings */}
-      <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full">
+  <div className="mx-auto mt-12 sm:mt-16">
+    {/* Weddings */}
+    <div className=" p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto place-items-center">
         {services.map((service) => (
-          <div key={service.id} className="p-6 bg-white rounded-lg shadow-md">
-            <h3 className="font-bold text-xl sm:text-2xl text-black mb-4">
+          <div 
+            key={service.id} 
+            className="p-6 bg-gray-300 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+          >
+            <h3 
+              className="font-bold text-xl sm:text-2xl text-black mb-4 transition-colors duration-300 hover:text-yellow-500"
+            >
               {service.title}
             </h3>
             <p className="text-sm sm:text-base mb-4">{service.description}</p>
@@ -312,24 +346,19 @@ const HomePage = () => {
               ))}
             </ul>
             <p className="text-lg sm:text-xl font-bold mt-4">{service.price}</p>
-          <button className="bg-yellow-400 text-black py-2 px-4 rounded-lg text-sm 
-                            w-full font-bold shadow-md hover:bg-yellow-500 transition-colors mt-4">
-            <Link href="/book?section=request">
-              Request Slot
-            </Link>
-          </button>
-
+            <button className="bg-yellow-400 text-black py-2 px-4 rounded-lg text-sm 
+                                w-full font-bold shadow-md hover:bg-yellow-500 transform hover:scale-105 transition-transform duration-300 mt-4">
+              <Link href="/book?section=request">
+                Request Slot
+              </Link>
+            </button>
           </div>
         ))}
-
-
       </div>
-
-      
-     
     </div>
   </div>
 </section>
+
 
 
 

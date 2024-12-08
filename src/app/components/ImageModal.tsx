@@ -28,7 +28,9 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageSrc, imageAlt, onC
         {/* Image or Loader */}
         <div className="relative w-full max-h-full rounded-lg flex justify-center items-center">
           {isLoading && (
-            <Loader/>
+            <div className="absolute inset-0 flex justify-center items-center">
+              <Loader />
+            </div>
           )}
           <Image
             src={imageSrc}

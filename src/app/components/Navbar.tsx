@@ -43,9 +43,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 py-4 px-6 transition-all ${
+      className={`fixed top-0 left-0 w-full z-50 py-4 px-6 transition-all duration-300 ${
         isScrolled ? "bg-black text-white shadow-lg" : "bg-transparent text-white"
       }`}
+      role="navigation"
     >
       <div className="flex justify-between items-center">
         {/* Logo */}
@@ -59,9 +60,9 @@ const Navbar = () => {
           {menuItems.map(({ label, route }) => (
             <Link key={label} href={route}>
               <span
-                className={`nav-link ${
+                className={`nav-link transition-all duration-200 ${
                   currentPath === route ? "text-yellow-500" : "text-white"
-                } hover:underline`}
+                } hover:text-yellow-400`}
               >
                 {label}
               </span>
@@ -74,7 +75,7 @@ const Navbar = () => {
           className="lg:hidden text-white"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
-          aria-expanded={isMenuOpen}
+          aria-expanded={isMenuOpen ? "true" : "false"}
         >
           {isMenuOpen ? (
             <svg
@@ -111,7 +112,7 @@ const Navbar = () => {
           {menuItems.map(({ label, route }) => (
             <Link key={label} href={route}>
               <button
-                className={`block w-full py-3 text-lg ${
+                className={`block w-full py-3 text-lg transition-all duration-200 ${
                   currentPath === route ? "underline text-yellow-400" : "hover:underline"
                 }`}
                 onClick={() => setIsMenuOpen(false)} // Close menu on item click
