@@ -37,6 +37,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageSrc, imageAlt, onC
             alt={imageAlt}
             width={800}
             height={600}
+            loading='lazy'
             className={`rounded-lg object-contain transition-opacity duration-300 ${
               isLoading ? 'opacity-0' : 'opacity-100'
             }`}

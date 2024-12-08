@@ -8,6 +8,7 @@ import { Picture } from '../model/Picture';
 import { Category } from '../model/category';
 import Loader from '../components/Loader';
 import ImageModal from '../components/ImageModal';
+import { FaArrowUp } from 'react-icons/fa';
 
 const PortfolioSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,6 +16,7 @@ const PortfolioSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [showScrollUpButton, setShowScrollUpButton] = useState(false); // State to track scroll position
 
   const router = useRouter(); // Initialize useRouter
 
@@ -62,6 +64,29 @@ const PortfolioSection = () => {
       setSelectedCategory(section);
     }
   }, [router.refresh]); // Dependency to re-run when query parameters change
+
+  // Handle scroll position to show/hide the "Scroll Up" button
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollUpButton(true); // Show button when scrolled down 300px
+      } else {
+        setShowScrollUpButton(false); // Hide button when scrolled to top
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Scroll to the top of the page
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -127,6 +152,17 @@ const PortfolioSection = () => {
           />
         )}
       </section>
+
+      {/* Scroll Up Button */}
+      {showScrollUpButton && (
+        <div
+          onClick={scrollToTop}
+          className="fixed bottom-16 right-6 bg-yellow-400 text-black p-4 rounded-full cursor-pointer shadow-lg z-50 hover:bg-yellow-500 transition-all"
+        >
+          <FaArrowUp />
+        </div>
+      )}
+
       <Footer />
     </>
   );
