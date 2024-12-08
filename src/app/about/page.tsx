@@ -57,6 +57,13 @@ const AboutPage = () => {
               ”I’m <span className="text-yellow-400">Hlogi</span>, a passionate photographer with over <span className="text-yellow-400">5 years</span> of experience capturing life’s most
               precious moments. From weddings to graduations and candid portraits, I strive to preserve emotions in every frame.”
             </p>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-yellow-400 uppercase mb-6">
+              Why Choose Me?
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-6 px-4">
+              With a proven track record of delivering stunning photography, I have helped countless clients capture their most memorable moments in vibrant, timeless images. My portfolio includes over 50 successful projects ranging from weddings and graduations to corporate events. Clients consistently praise my ability to exceed expectations by tailoring each session to their unique vision, resulting in photos that perfectly encapsulate their story. Partner with me, and you'll receive not only exceptional photos but also a professional and seamless experience from start to finish.
+            </p>
+
           </div>
         </div>
 

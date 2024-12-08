@@ -49,7 +49,7 @@ export default function Footer() {
         </a> */}
       </div>
       <p>&copy; 2025 TLT Media. All rights reserved.</p>
-      <p>Designed by <a href="https://www.linkedin.com/in/triumph-ndlovu-425b73274/" target="_blank" rel="noopener noreferrer" className="text-black hover:text-white transition-colors underline">Triumph</a></p>
+      <p>Designed by <a href="https://triumph-portfolio-seven.vercel.app" target="_blank" rel="noopener noreferrer" className="text-black hover:text-white transition-colors underline">Triumph</a></p>
     </footer>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 
 const BookPage = () => {
@@ -48,6 +48,14 @@ const BookPage = () => {
       setIsSubmitting(false);
     }
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get('section');
+    if (section) {
+      document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
 
   return (
     <div className="bg-black text-offwhite font-serif">
@@ -104,7 +112,7 @@ const BookPage = () => {
         </section>
 
         {/* Booking Form */}
-        <h3 className="text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-4 text-center">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-4 text-center" id='request'>
           Request a Slot 
         </h3>
         <p className="text-center text-lg text-white mb-12">

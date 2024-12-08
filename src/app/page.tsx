@@ -49,6 +49,81 @@ const HomePage = () => {
     }
   ];
 
+  const services = [
+    {
+      id: 1,
+      title: 'Weddings',
+      description:
+        'Capture the magic of your special day with timeless photography that tells your unique love story.',
+      features: [
+        'Coverage for ceremonies & receptions',
+        'Pre-wedding couple shoots',
+        'Full-resolution edited images',
+      ],
+      price: 'Starting at R5,000',
+    },
+    {
+      id: 2,
+      title: 'Graduations',
+      description:
+        'Celebrate your academic achievements with professional photography that captures your pride and joy.',
+      features: [
+        'Solo and group shots available',
+        'On-location campus photos',
+        'Digital or printed album options',
+      ],
+      price: 'Starting at R1,500',
+    },
+    {
+      id: 3,
+      title: 'Events',
+      description:
+        'From corporate functions to birthday parties, I offer event photography services that capture every moment.',
+      features: [
+        'Flexible hourly packages',
+        'Professional lighting setup',
+        'High-quality event coverage',
+      ],
+      price: 'Starting at R3,000',
+    },
+    {
+      id: 4,
+      title: 'Portraits',
+      description:
+        'Whether it’s professional headshots or family portraits, I create stunning images that reflect your personality.',
+      features: [
+        'Studio or outdoor shoots',
+        'Customized creative themes',
+        'Quick editing turnaround',
+      ],
+      price: 'Starting at R2,000',
+    },
+    {
+      id: 5,
+      title: 'Matric Dance',
+      description:
+        'Make your matric dance unforgettable with glamorous photography that captures your style and spirit.',
+      features: [
+        'Solo and group shots available',
+        'On-location venue photos',
+        'Digital or printed album options',
+      ],
+      price: 'Starting at R2,500',
+    },
+    {
+      id: 6,
+      title: 'Other',
+      description:
+        'Have a unique project in mind? Contact me for a custom quote on your photography or videography needs.',
+      features: [
+        'Customized packages available',
+        'Special requests welcome',
+        'Flexible pricing options',
+      ],
+      price: 'Contact for Quote',
+    },
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollUp(window.scrollY > 200);
@@ -219,122 +294,38 @@ const HomePage = () => {
     Services.
   </h2>
   <div className="max-w-7xl mx-auto mt-12 sm:mt-16">
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full">
       
       {/* Weddings */}
       <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
-        <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
-          💍 Weddings
-        </h3>
-        <p className="text-gray-800 text-sm mb-4">
-          Capture the magic of your special day with timeless photography that tells your unique love story.
-        </p>
-        <ul className="text-gray-700 text-sm mb-4 space-y-1">
-          <li>✨ Coverage for ceremonies & receptions</li>
-          <li>✨ Pre-wedding couple shoots</li>
-          <li>✨ Full-resolution edited images</li>
-        </ul>
-        <p className="text-black font-bold">Starting at R5,000</p>
-        <a href="/book" className="mt-4 inline-block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 text-center">
-          Request session
-        </a>
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full">
+        {services.map((service) => (
+          <div key={service.id} className="p-6 bg-white rounded-lg shadow-md">
+            <h3 className="font-bold text-xl sm:text-2xl text-black mb-4">
+              {service.title}
+            </h3>
+            <p className="text-sm sm:text-base mb-4">{service.description}</p>
+            <ul className="list-disc list-inside">
+              {service.features.map((feature, index) => (
+                <li key={index} className="text-sm sm:text-base text-gray-500">
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <p className="text-lg sm:text-xl font-bold mt-4">{service.price}</p>
+          <button className="bg-yellow-400 text-black py-2 px-4 rounded-lg text-sm 
+                            w-full font-bold shadow-md hover:bg-yellow-500 transition-colors mt-4">
+            <Link href="/book?section=request">
+              Request Slot
+            </Link>
+          </button>
 
-      {/* Graduations */}
-      <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
-        <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
-          🎓 Graduations
-        </h3>
-        <p className="text-gray-800 text-sm mb-4">
-          Celebrate your academic achievements with professional photography that captures your pride and joy.
-        </p>
-        <ul className="text-gray-700 text-sm mb-4 space-y-1">
-          <li>✨ Solo and group shots available</li>
-          <li>✨ On-location campus photos</li>
-          <li>✨ Digital or printed album options</li>
-        </ul>
-        <p className="text-black font-bold">Starting at R1,500</p>
-        <a href="/book" className="mt-4 inline-block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 text-center">
-          Request session
-        </a>
-      </div>
-
-      {/* Events */}
-      <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
-        <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
-          🎉 Events
-        </h3>
-        <p className="text-gray-800 text-sm mb-4">
-          From corporate functions to birthday parties, I offer event photography services that capture every moment.
-        </p>
-        <ul className="text-gray-700 text-sm mb-4 space-y-1">
-          <li>✨ Flexible hourly packages</li>
-          <li>✨ Professional lighting setup</li>
-          <li>✨ High-quality event coverage</li>
-        </ul>
-        <p className="text-black font-bold">Starting at R3,000</p>
-        <a href="/book" className="mt-4 inline-block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 text-center">
-          Request session
-        </a>
-      </div>
-
-      {/* Portraits */}
-      <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
-        <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
-          📸 Portraits
-        </h3>
-        <p className="text-gray-800 text-sm mb-4">
-          Whether it’s professional headshots or family portraits, I create stunning images that reflect your personality.
-        </p>
-        <ul className="text-gray-700 text-sm mb-4 space-y-1">
-          <li>✨ Studio or outdoor shoots</li>
-          <li>✨ Customized creative themes</li>
-          <li>✨ Quick editing turnaround</li>
-        </ul>
-        <p className="text-black font-bold">Starting at R2,000</p>
-        <a href='/book' className="mt-4 inline-block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 text-center">
-          Request session
-        </a>
-      </div>
-
-      {/* Matric Dance*/}
-      <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
-        <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
-          💃 Matric Dance
-        </h3>
-        <p className="text-gray-800 text-sm mb-4">
-          Make your matric dance unforgettable with glamorous photography that captures your style and spirit.
-        </p>
-        <ul className="text-gray-700 text-sm mb-4 space-y-1">
-          <li>✨ Solo and group shots available</li>
-          <li>✨ On-location venue photos</li>
-          <li>✨ Digital or printed album options</li>
-        </ul>
-        <p className="text-black font-bold">Starting at R2,500</p>
-        <a href="/book" className="mt-4 inline-block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 text-center">
-          Request session
-        </a>
-      </div>
+          </div>
+        ))}
 
 
-      {/* Other*/}
-      <div className="bg-yellow-500 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
-        <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
-          🎨 Other
-        </h3>
-        <p className="text-gray-800 text-sm mb-4">
-          Have a unique project in mind? Contact me for a custom quote on your photography or videography needs.
-        </p>
-        <ul className="text-gray-700 text-sm mb-4 space-y-1">
-          <li>✨ Customized packages available</li>
-          <li>✨ Special requests welcome</li>
-          <li>✨ Flexible pricing options</li>
-        </ul>
-        <p className="text-black font-bold">Contact for Quote</p>
-        <a href="/book" className="mt-4 inline-block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 text-center">
-          Request session
-        </a>
       </div>
+
+      
      
     </div>
   </div>
