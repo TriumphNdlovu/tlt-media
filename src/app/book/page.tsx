@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
+import { FaArrowUp } from 'react-icons/fa';
 
 const BookPage = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,15 @@ const BookPage = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState('');
+  const [formErrors, setFormErrors] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    date: '',
+    time: '',
+  });
+
+  const [showScrollUp, setShowScrollUp] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -22,12 +32,28 @@ const BookPage = () => {
       ...prevData,
       [name]: value,
     }));
+
+    // Basic validation
+    if (name === 'email' && value && !/\S+@\S+\.\S+/.test(value)) {
+      setFormErrors((prev) => ({ ...prev, email: 'Please enter a valid email.' }));
+    } else if (name === 'phone' && value && !/^\d{10}$/.test(value)) {
+      setFormErrors((prev) => ({ ...prev, phone: 'Please enter a valid phone number.' }));
+    } else {
+      setFormErrors((prev) => ({ ...prev, [name]: '' }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setFormStatus('Submitting...');
+
+    // Simple validation before submitting
+    if (!formData.name || !formData.email || !formData.date || !formData.time) {
+      setFormStatus('Please fill in all required fields.');
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const response = await fetch('/api/sendEmail', {
@@ -55,10 +81,31 @@ const BookPage = () => {
     if (section) {
       document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
     }
+
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowScrollUp(true);
+      } else {
+        setShowScrollUp(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <div className="bg-black text-offwhite font-serif">
+    <div className="bg-black text-offwhite font-serif bg-cover bg-center" 
+    style={{ backgroundImage: 'url(/background-image.jpg)' ,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
+
+    }}>
       {/* Navbar */}
       <Navbar />
 
@@ -78,50 +125,57 @@ const BookPage = () => {
           />
         </div>
 
-        {/* Price List */}
-          <h3 className="text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-8 text-center">
-            Price List
-          </h3>
-          <p className="text-center text-lg text-white mb-12">
-            These are the standard rates for different types of photography sessions. Please note that these are starting prices and may vary based on the scope of work.
-          </p>
+        {/* Working Hours Section */}
+        <h3 className="text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-8 text-center">
+          My Working Hours
+        </h3>
         <section className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12">
+          <div className="p-6 bg-white rounded-lg shadow-md transform transition-transform duration-300  hover:shadow-lg">
+            <ul className="space-y-4 text-sm sm:text-base text-black">
+              <li className="flex justify-between">
+                <span>Monday</span>
+                <span className="font-bold text-black">9:00 AM - 6:00 PM</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Tuesday</span>
+                <span className="font-bold ">9:00 AM - 6:00 PM</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Wednesday</span>
+                <span className="font-bold ">9:00 AM - 6:00 PM</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Thursday</span>
+                <span className="font-bold ">9:00 AM - 6:00 PM</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Friday</span>
+                <span className="font-bold ">9:00 AM - 6:00 PM</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Saturday</span>
+                <span className="font-bold ">10:00 AM - 4:00 PM</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Sunday</span>
+                <span className="font-bold ">Closed</span>
+              </li>
+            </ul>
+          </div>
 
-          <ul className="space-y-6 text-lg text-white">
-            <li className="flex justify-between border-b pb-4">
-              <span>Graduations Photography</span>
-              <span className="font-bold text-yellow-400">R500 / Hour</span>
-            </li>
-            <li className="flex justify-between border-b pb-4">
-              <span>Event Photography</span>
-              <span className="font-bold text-yellow-400">R500 / Hour</span>
-            </li>
-            <li className="flex justify-between border-b pb-4">
-              <span>Brand Photography</span>
-              <span className="font-bold text-yellow-400">R800 / Hour</span>
-            </li>
-            <li className="flex justify-between border-b pb-4">
-              <span>Wedding Photography</span>
-              <span className="font-bold text-yellow-400">R10 000 / Day</span>
-            </li>
-            <li className="flex justify-between border-b pb-4">
-              <span>Other</span>
-              <span className="font-bold text-yellow-400">Contact for Quote</span>
-            </li>
-          </ul>
         </section>
 
         {/* Booking Form */}
-        <h3 className="text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-4 text-center" id='request'>
+        <h3 className=" text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-4 text-center" id='request'>
           Request a Slot 
         </h3>
         <p className="text-center text-lg text-white mb-12">
           Please note that this is a request form and not a confirmation of booking. We will get back to you to confirm your booking and more info.
         </p>
 
-        <div className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12">
+        <div className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12 bg-black bg-opacity-90">
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Form fields here */}
+            {/* Form fields */}
             <div className="grid grid-cols-1 sm:grid-cols-1 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm sm:text-lg text-white mb-2">Full Name</label>
@@ -131,7 +185,7 @@ const BookPage = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full p-3  text-white rounded-md border border-white bg-black"
+                  className="w-full p-3 text-white rounded-md border border-white bg-black"
                   required
                 />
               </div>
@@ -144,9 +198,10 @@ const BookPage = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full p-3  text-white rounded-md border border-white bg-black"
+                  className="w-full p-3 text-white rounded-md border border-white bg-black"
                   required
                 />
+                {formErrors.email && <p className="text-red-500 text-sm">{formErrors.email}</p>}
               </div>
             </div>
 
@@ -159,72 +214,78 @@ const BookPage = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full p-3  text-white rounded-md border border-white bg-black"
+                  className="w-full p-3 text-white rounded-md border border-white bg-black"
                 />
+                {formErrors.phone && <p className="text-red-500 text-sm">{formErrors.phone}</p>}
               </div>
 
               <div>
-                <label htmlFor="date" className="block text-sm sm:text-lg text-white mb-2">Preferred Session Date</label>
+                <label htmlFor="date" className="block text-sm sm:text-lg text-white mb-2">Preferred Date</label>
                 <input
                   type="date"
                   id="date"
                   name="date"
                   value={formData.date}
                   onChange={handleInputChange}
-                  className="w-full p-3  text-white rounded-md border border-white bg-black"
+                  className="w-full p-3 text-white rounded-md border border-white bg-black"
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="time" className="block text-sm sm:text-lg text-white mb-2">Preferred Time</label>
+                <input
+                  type="time"
+                  id="time"
+                  name="time"
+                  value={formData.time}
+                  onChange={handleInputChange}
+                  className="w-full p-3 text-white rounded-md border border-white bg-black"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="time" className="block text-sm sm:text-lg text-white mb-2">Preferred Session Time</label>
-              <input
-                type="time"
-                id="time"
-                name="time"
-                value={formData.time}
-                onChange={handleInputChange}
-                className="w-full p-3  text-white rounded-md border border-white bg-black"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm sm:text-lg text-white mb-2">Message</label>
+              <label htmlFor="message" className="block text-sm sm:text-lg text-white mb-2">Additional Message</label>
               <textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleInputChange}
-                rows={2}
-                className="w-full p-3  text-white rounded-md border border-white bg-black"
-              ></textarea>
+                className="w-full p-3 text-white rounded-md border border-white bg-black"
+                rows={4}
+              />
             </div>
 
             <div className="text-center">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-yellow-400 text-black py-3 px-8 rounded-md text-lg font-semibold uppercase hover:bg-yellow-500 transition-colors"
+                className={`px-6 py-3 text-lg text-black bg-yellow-400 rounded-md ${isSubmitting && 'opacity-50'}`}
               >
-                {isSubmitting ? 'Submitting...' : 'Submit Booking Request'}
+                {isSubmitting ? 'Submitting...' : 'Submit Request'}
               </button>
             </div>
-          </form>
 
-          {formStatus && (
-            <div className="mt-6 text-center text-xl text-yellow text-white">
-              {formStatus}
-            </div>
-          )}
+            {formStatus && (
+              <div className={`text-center mt-6 ${formStatus.includes('Success') ? 'text-green-500' : 'text-red-500'}`}>
+                <p>{formStatus}</p>
+              </div>
+            )}
+          </form>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 bg-black text-white text-center">
-        <p>&copy; 2024 TLT Media. All rights reserved.</p>
-      </footer>
+      {/* Scroll-Up Button */}
+      {showScrollUp && (
+        <div
+          onClick={scrollToTop}
+          className="fixed bottom-16 right-6 bg-yellow-400 text-black p-4 rounded-full cursor-pointer shadow-lg z-50 hover:bg-yellow-500 transition-all"
+        >
+          <FaArrowUp />
+        </div>
+      )}
     </div>
   );
 };
