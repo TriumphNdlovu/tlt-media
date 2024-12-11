@@ -89,10 +89,13 @@ const PortfolioSection = () => {
   };
 
   return (
-    <>
+    <section className="text-offwhite font-serif">
       <Navbar />
-      <section className="bg-black text-white py-16 px-6 min-h-screen">
+      {/* <section className="bg-black text-white py-16 px-6 min-h-screen"> */}
+        <section className="flex flex-col items-center justify-center text-center animate-fadeIn px-6 py-10 sm:px-10 sm:py-16 mt-[4rem] sm:mt-[5rem] bg-black">
+
         <h2 className="text-4xl md:text-6xl font-serif uppercase text-center tracking-widest mb-12 text-yellow-400">
+
           Portfolio.
         </h2>
 
@@ -164,7 +167,7 @@ const PortfolioSection = () => {
       )}
 
       <Footer />
-    </>
+    </section>
   );
 };
 

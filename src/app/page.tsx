@@ -260,7 +260,7 @@ const HomePage = () => {
                       alt={`Portfolio ${item}`}
                       fill
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                      sizes="(max-width: 768px) 100vw, 25vw"
+                      // sizes="(max-width: 768px) 100vw, 25vw"
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent group-hover:from-yellow-400 group-hover:via-yellow-500/10 transition-all duration-500 flex items-end p-4">
@@ -271,7 +271,7 @@ const HomePage = () => {
                         ? 'Weddings 💍'
                         : item === 3
                         ? 'Matric Dance 💃'
-                        : 'brand Shoot 👕'}
+                        : 'Other 👕'}
                     </h3>
                   </div>
                 </Link>
@@ -324,7 +324,7 @@ const HomePage = () => {
     Services.
   </h2>
   <div className="mx-auto mt-12 sm:mt-16">
-    {/* Weddings */}
+    {/* Services */}
     <div className=" p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto place-items-center">
         {services.map((service) => (
