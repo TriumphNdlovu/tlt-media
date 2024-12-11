@@ -255,7 +255,7 @@ const BookPage = () => {
               </div>
 
               <div>
-                <label htmlFor="time" className="block text-sm sm:text-lg text-white mb-2">Preferred Time</label>
+                <label htmlFor="time" className="block text-sm sm:text-lg text-white mb-2">Start Time</label>
                 <input
                   type="time"
                   id="time"
@@ -291,7 +291,7 @@ const BookPage = () => {
             </div>
 
             {formStatus && (
-              <div className={`text-center mt-6 ${formStatus.includes('Success') ? 'text-green-500' : 'text-red-500'}`}>
+              <div className={`text-center mt-6 ${formStatus.includes('Successfully') ? 'text-green-500' : 'text-red-500'}`}>
                 <p>{formStatus}</p>
               </div>
             )}

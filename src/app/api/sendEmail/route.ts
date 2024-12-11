@@ -72,7 +72,7 @@ export async function POST(request: Request) {
               <th style="text-align: left; padding: 10px; text-transform: uppercase; font-weight: bold;">Details</th>
             </tr>
             <tr>
-              <td style="padding: 10px; border-bottom: 1px solid #ccc;">Name</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">Full Name</td>
               <td style="padding: 10px; border-bottom: 1px solid #ccc;">${name}</td>
             </tr>
             <tr>
@@ -92,11 +92,11 @@ export async function POST(request: Request) {
               <td style="padding: 10px; border-bottom: 1px solid #ccc;">${date}</td>
             </tr>
             <tr>
-              <td style="padding: 10px; border-bottom: 1px solid #ccc;">Preferred Time</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">Start Time</td>
               <td style="padding: 10px; border-bottom: 1px solid #ccc;">${time}</td>
             </tr>
             <tr>
-              <td style="padding: 10px; border-bottom: 1px solid #ccc;">Message</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">Additional Message</td>
               <td style="padding: 10px; border-bottom: 1px solid #ccc;">${message}</td>
             </tr>
           </table>

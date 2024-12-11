@@ -74,119 +74,122 @@ const AboutPage = () => {
               you can use the <Link href="/book"> <span className='text-yellow-400 underline'>Book</span> </Link> book a session with me.
             </p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8">
-              {/* Email */}
-              <a
-                href="mailto:lehlogonologiven8@gmail.com"
-                className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors"
-              >
-                <FaEnvelope className="text-xl" />
-                lehlogonologiven8@gmail.com
-              </a>
-                
-                {/* Whatsapp */}
+            <div className="flex flex-wrap justify-center gap-6 mb-8">
+                {/* Email */}
+                <a
+                  href="mailto:lehlogonologiven8@gmail.com"
+                  className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors break-all"
+                >
+                  <FaEnvelope className="text-xl" />
+                  lehlogonologiven8@gmail.com
+                </a>
+
+                {/* WhatsApp */}
                 <a
                   href="https://wa.me/+27799542456"
                   className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors"
                 >
                   <FaWhatsapp className="text-xl" />
-                  +27 79 954 2456
+                  <span>+27 79 954 2456</span>
                 </a>
-                  
-                  {/* Instagram */}
-                  <a
-                    href="https://www.instagram.com/hlogi_photography/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors"
-                  >
-                    <FaInstagram className="text-xl" />
-                    Instagram
-                  </a>
-                    
-                    {/* Facebook*/}
-                    <a
-                      href="https://www.facebook.com/hlogi_photography/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors"
-                    >
-                      <FaFacebook className="text-xl" />
-                      Facebook
-                    </a>
 
-                    {/* TikTok */}
-                    <a
-                      href="https://www.tiktok.com/@hlogi_photography"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors"
-                    >
-                      <FaTiktok className="text-xl" />
-                      TikTok
-                    </a>
-            </div>
+                {/* Instagram */}
+                <a
+                  href="https://www.instagram.com/hlogi_photography/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors"
+                >
+                  <FaInstagram className="text-xl" />
+                  <span>Instagram</span>
+                </a>
 
+                {/* Facebook */}
+                <a
+                  href="https://www.facebook.com/hlogi_photography/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors"
+                >
+                  <FaFacebook className="text-xl" />
+                  <span>Facebook</span>
+                </a>
+
+                {/* TikTok */}
+                <a
+                  href="https://www.tiktok.com/@hlogi_photography"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors"
+                >
+                  <FaTiktok className="text-xl" />
+                  <span>TikTok</span>
+                </a>
+              </div>
 
           </div>
         </div>
 
         {/* Contact Section */}
-        <div className="text-center mt-16 sm:mt-20 bg-black bg-opacity-90">
-  
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-purple-400 uppercase mb-4">
-              Need a Website? Let's Work Together.
-            </h2>
-            <div className=''>
-              <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed mb-8 px-4">
-                Please contact me if you need a website for your business or personal use. Let's work together to bring your vision to life!  
-              </p>
+       <section className="text-center mt-16 sm:mt-20 bg-black bg-opacity-90 py-10 px-4">
+  <div className="max-w-4xl mx-auto">
+    {/* Header */}
+    <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-purple-400 uppercase mb-4">
+      Need a Website? Let's Work Together.
+    </h2>
+    {/* Subtext */}
+    <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed mb-8">
+      Please contact me if you need a website for your business or personal use. Let's work together to bring your vision to life!
+    </p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8">
-            {/* Email */}
-            <a
-              href="mailto:realtriumphndlovu@gmail.com"
-              className="flex items-center gap-2 text-purple-400 text-lg font-semibold hover:underline transition-colors"
-            >
-              <FaEnvelope className="text-xl" />
-              realtriumphndlovu@gmail.com
-            </a>
+    {/* Contact Links */}
+    <div className="flex flex-wrap justify-center items-center gap-6">
+      {/* Email */}
+      <a
+        href="mailto:realtriumphndlovu@gmail.com"
+        className="flex flex-wrap items-center gap-2 text-purple-400 text-lg font-semibold hover:underline transition-colors"
+      >
+        <FaEnvelope className="text-xl" />
+        <span className="break-all">realtriumphndlovu@gmail.com</span>
+      </a>
 
-            {/* Whatsapp */}
-            <a
-              href="https://wa.me/+27827793863"
-              className="flex items-center gap-2 text-purple-400 text-lg font-semibold hover:underline transition-colors"
-            >
-              <FaWhatsapp className="text-xl" />
-              +27 82 779 3863
-            </a>
+      {/* WhatsApp */}
+      <a
+        href="https://wa.me/+27827793863"
+        className="flex flex-wrap items-center gap-2 text-purple-400 text-lg font-semibold hover:underline transition-colors"
+      >
+        <FaWhatsapp className="text-xl" />
+        <span>+27 82 779 3863</span>
+      </a>
 
-            {/* Personal Website */}
-            <a
-              href="https://triumph-portfolio-seven.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-purple-400 text-lg font-semibold hover:underline transition-colors"
-            >
-              <FaGlobe className="text-xl" />
-              Personal Website
-            </a>
+      {/* Personal Website */}
+      <a
+        href="https://triumph-portfolio-seven.vercel.app"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex flex-wrap items-center gap-2 text-purple-400 text-lg font-semibold hover:underline transition-colors"
+      >
+        <FaGlobe className="text-xl" />
+        <span>Personal Website</span>
+      </a>
 
-            {/* LinkedIn */}
-            <a
-              href="https://www.linkedin.com/in/triumph-ndlovu-425b73274/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-purple-400 text-lg font-semibold hover:underline transition-colors"
-            >
-              <FaLinkedin className="text-xl" />
-              LinkedIn
-            </a>
-          </div>
-          
-            </div>
-          </div>
+      {/* LinkedIn */}
+      <a
+        href="https://www.linkedin.com/in/triumph-ndlovu-425b73274/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex flex-wrap items-center gap-2 text-purple-400 text-lg font-semibold hover:underline transition-colors"
+      >
+        <FaLinkedin className="text-xl" />
+        <span>LinkedIn</span>
+      </a>
+    </div>
+  </div>
+</section>
 
+
+   
+      
 
       </section>
 
@@ -201,6 +204,7 @@ const AboutPage = () => {
       )}
 
       <Footer />
+
     </section>
   );
 };
