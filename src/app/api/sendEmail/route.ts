@@ -23,7 +23,7 @@ export async function POST(request: Request) {
       location: `My Studio or ${name}'s Location`,
       status: 'CONFIRMED' as EventStatus,
       organizer: { name: 'Hlogi', email: process.env.EMAIL_USER! },
-      attendees: [{ name, email }, { name: 'Hlogi', email: process.env.EMAIL_USER! }],
+      attendees: [{ name, email }, { name: 'Hlogi', email: "lehlogonologiven8@gmail.com" }],
     };
 
     // Generate the .ics file content
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
     // Email content
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: [process.env.EMAIL_USER, email],
+      to: ["lehlogonologiven8@gmail.com", email],
       subject: `New Booking Request from ${name}`,
       text: `
         Name: ${name}

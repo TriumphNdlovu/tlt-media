@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { FaArrowUp, FaEnvelope, FaGlobe, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { FaArrowUp, FaEnvelope, FaFacebook, FaGlobe, FaInstagram, FaLinkedin, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 import Link from 'next/link';
 
 const AboutPage = () => {
@@ -70,8 +70,8 @@ const AboutPage = () => {
               How To Contact me ?
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-6 px-4">
-              I am available for bookings and inquiries. Please feel free to reach out to me via email or phone, and I will respond promptly. I look forward to hearing from you and discussing how we can work together to create lasting memories.
-              you can use the <Link href="/book"> <span className='text-yellow-400'>Book</span> </Link> or the contact details below.
+              I am available for bookings and inquiries. Please feel free to reach out to me via WhatsApp, phone or Social Media below and I will respond promptly. I look forward to hearing from you and discussing how we can work together to create lasting memories.
+              you can use the <Link href="/book"> <span className='text-yellow-400 underline'>Book</span> </Link> book a session with me.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8">
@@ -81,15 +81,16 @@ const AboutPage = () => {
                 className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors"
               >
                 <FaEnvelope className="text-xl" />
+                lehlogonologiven8@gmail.com
               </a>
                 
                 {/* Whatsapp */}
                 <a
-                  href="https://wa.me/+27827793863"
+                  href="https://wa.me/+27799542456"
                   className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors"
                 >
                   <FaWhatsapp className="text-xl" />
-                  +27 82 779 3863
+                  +27 79 954 2456
                 </a>
                   
                   {/* Instagram */}
@@ -99,7 +100,7 @@ const AboutPage = () => {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors"
                   >
-                    <FaGlobe className="text-xl" />
+                    <FaInstagram className="text-xl" />
                     Instagram
                   </a>
                     
@@ -110,7 +111,7 @@ const AboutPage = () => {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors"
                     >
-                      <FaGlobe className="text-xl" />
+                      <FaFacebook className="text-xl" />
                       Facebook
                     </a>
 
@@ -121,7 +122,7 @@ const AboutPage = () => {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-yellow-400 text-lg font-semibold hover:underline transition-colors"
                     >
-                      <FaGlobe className="text-xl" />
+                      <FaTiktok className="text-xl" />
                       TikTok
                     </a>
             </div>
@@ -139,7 +140,7 @@ const AboutPage = () => {
             </h2>
             <div className='bg-black opacity-80'>
               <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed mb-8 px-4">
-                Please contact me if you need a website for your business or personal use. I specialize in creating responsive websites that are both visually appealing and user-friendly. Let's work together to bring your vision to life!  
+                Please contact me if you need a website for your business or personal use. Let's work together to bring your vision to life!  
               </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8">
