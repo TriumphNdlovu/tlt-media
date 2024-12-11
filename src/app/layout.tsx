@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "./components/Navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "TLT Media | Capturing Life in Black & White",
-  description: "Photography that tells a story. Simple. Bold. Timeless.",
+  title: "TLT Media | Life Through my Lens",
+  description: "Simple. Bold. Timeless.",
 };
 
 export default function RootLayout({

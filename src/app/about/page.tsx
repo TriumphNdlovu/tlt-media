@@ -132,13 +132,12 @@ const AboutPage = () => {
         </div>
 
         {/* Contact Section */}
-        <div className="text-center mt-16 sm:mt-20">
+        <div className="text-center mt-16 sm:mt-20 bg-black bg-opacity-90">
   
-            <div className="text-center mt-16 sm:mt-20">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-purple-400 uppercase mb-4">
               Need a Website? Let's Work Together.
             </h2>
-            <div className='bg-black opacity-80'>
+            <div className=''>
               <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed mb-8 px-4">
                 Please contact me if you need a website for your business or personal use. Let's work together to bring your vision to life!  
               </p>
@@ -184,8 +183,7 @@ const AboutPage = () => {
               LinkedIn
             </a>
           </div>
-            
-            </div>
+          
             </div>
           </div>
 

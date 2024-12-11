@@ -22,7 +22,7 @@ export async function POST(request: Request) {
       description: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
       location: `My Studio or ${name}'s Location`,
       status: 'CONFIRMED' as EventStatus,
-      organizer: { name: 'Hlogi', email: process.env.EMAIL_USER! },
+      organizer: { name: 'TLT MEDIA', email: process.env.EMAIL_USER! },
       attendees: [{ name, email }, { name: 'Hlogi', email: "lehlogonologiven8@gmail.com" }],
     };
 
@@ -62,6 +62,49 @@ export async function POST(request: Request) {
         Preferred Time: ${time}
         Message: ${message}
       `,
+      html: `
+        <div style="font-family: 'Georgia', serif; line-height: 1.8; color: #000; padding: 20px; background-color: #fff; border: 1px solid #000;">
+          <h2 style="text-align: center; color: #000; text-transform: uppercase; letter-spacing: 2px;">New Booking Request</h2>
+          <p style="margin: 0 0 20px; text-align: center;">Details of the request are as follows:</p>
+          <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 16px; color: #000;">
+            <tr style="background-color: #f2f2f2; border-bottom: 2px solid #000;">
+              <th style="text-align: left; padding: 10px; text-transform: uppercase; font-weight: bold;">Field</th>
+              <th style="text-align: left; padding: 10px; text-transform: uppercase; font-weight: bold;">Details</th>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">Name</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">${name}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">Email</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">${email}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">Phone</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">${phone}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">Category</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">${category}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">Preferred Date</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">${date}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">Preferred Time</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">${time}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">Message</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ccc;">${message}</td>
+            </tr>
+          </table>
+          <p style="text-align: center; margin-top: 20px; font-size: 14px; font-style: italic;">
+            Thank you for using our booking system. Please contact us for any updates or inquiries.
+          </p>
+        </div>
+      `,
       attachments: [
         {
           filename: 'booking.ics',
@@ -69,6 +112,7 @@ export async function POST(request: Request) {
         },
       ],
     };
+
 
     // Send the email
     const info = await transporter.sendMail(mailOptions);

@@ -231,9 +231,13 @@ const BookPage = () => {
                   className="w-full p-3 text-white rounded-md border border-white bg-black"
                 >
                   <option value="">Select a category</option>
-                  <option value="Photography">Photography</option>
-                  <option value="Videography">Videography</option>
-                  <option value="Both">Both</option>
+                  <option value="Wedding">Wedding</option>
+                  <option value="MatricDance">Matric Dance</option>
+                  <option value="brandShoot">BrandShoot</option>
+                  <option value="Lobola">Lobola</option>
+                  <option value="Birthday">Birthday</option>
+                  <option value="Event">Event</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
 
