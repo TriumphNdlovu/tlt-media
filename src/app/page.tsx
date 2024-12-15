@@ -52,43 +52,19 @@ const HomePage = () => {
   const services = [
     {
       id: 1,
-      title: 'Weddings',
+      title: 'Simple Shoots',
       description:
-        'Capture the magic of your special day with timeless photography that tells your unique love story.',
+        'Capture your special moments with professional photography that tells your unique story.',
       features: [
-        'Coverage for ceremonies & receptions',
-        'Pre-wedding couple shoots',
-        'Full-resolution edited images',
+        'Graduations',
+        'Matric Dance',
+        'Baby Showers',
       ],
-      price: 'Starting at R5,000',
+      price: 'Starting at R1,200',
     },
     {
       id: 2,
-      title: 'Graduations',
-      description:
-        'Celebrate your academic achievements with professional photography that captures your pride and joy.',
-      features: [
-        'Solo and group shots available',
-        'On-location campus photos',
-        'Digital or printed album options',
-      ],
-      price: 'Starting at R1,500',
-    },
-    {
-      id: 3,
-      title: 'Events',
-      description:
-        'From corporate functions to birthday parties, I offer event photography services that capture every moment.',
-      features: [
-        'Flexible hourly packages',
-        'Professional lighting setup',
-        'High-quality event coverage',
-      ],
-      price: 'Starting at R3,000',
-    },
-    {
-      id: 4,
-      title: 'Portraits',
+      title: 'Birthday Parties',
       description:
         'Whether it’s professional headshots or family portraits, I create stunning images that reflect your personality.',
       features: [
@@ -99,17 +75,41 @@ const HomePage = () => {
       price: 'Starting at R2,000',
     },
     {
-      id: 5,
-      title: 'Matric Dance',
+      id: 4,
+      title: 'Lobola Negotiations',
       description:
-        'Make your matric dance unforgettable with glamorous photography that captures your style and spirit.',
+      'Capture the beauty and tradition of your lobola negotiations with professional photography and videography.',
       features: [
-        'Solo and group shots available',
-        'On-location venue photos',
-        'Digital or printed album options',
+        'Full-day coverage',
+        'Customized packages',
+        'Quick editing turnaround',
       ],
-      price: 'Starting at R2,500',
+      price: 'Starting at R3,000',
     },
+    {
+      id: 5,
+      title: 'Videography',
+      description:
+      'Capture your special moments with professional videography that tells your unique story.',
+      features: [
+        'Full-day coverage',
+        'Edited digital album',
+        'Customized packages',
+      ],
+      price: 'Starting at R3,000',
+    },
+      {
+        id: 3,
+        title: 'Wedding',
+        description:
+          'Celebrate your love with stunning wedding photography that captures every detail of your special day.',
+        features: [
+          'Full-day coverage',
+          'Engagement shoot',
+          'Customized packages',
+        ],
+        price: 'Starting at R6,000',
+      },
     {
       id: 6,
       title: 'Other',
@@ -330,7 +330,7 @@ const HomePage = () => {
         {services.map((service) => (
           <div 
             key={service.id} 
-            className="p-6 bg-gray-300 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+            className="p-6 bg-white bg-opacity-80 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
           >
             <h3 
               className="font-bold text-xl sm:text-2xl text-black mb-4 transition-colors duration-300 hover:text-yellow-500"
@@ -340,14 +340,15 @@ const HomePage = () => {
             <p className="text-sm sm:text-base mb-4">{service.description}</p>
             <ul className="list-disc list-inside">
               {service.features.map((feature, index) => (
-                <li key={index} className="text-sm sm:text-base text-gray-500">
+                <li key={index} className="text-sm sm:text-base text-black font-bold">
                   {feature}
                 </li>
               ))}
             </ul>
-            <p className="text-lg sm:text-xl font-bold mt-4">{service.price}</p>
+            <p className="text-lg sm:text-xl font-bold mt-4 w-full justify-center text-center">{service.price}</p>
             <button className="bg-yellow-400 text-black py-2 px-4 rounded-lg text-sm 
-                                w-full font-bold shadow-md hover:bg-yellow-500 transform hover:scale-105 transition-transform duration-300 mt-4">
+                                w-full font-bold shadow-md hover:bg-yellow-500 transform 
+                                hover:scale-105 transition-transform duration-300 mt-4">
               <Link href="/book?section=request">
                 Request Slot
               </Link>

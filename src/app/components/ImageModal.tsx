@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Loader from './Loader';
 
@@ -10,14 +10,29 @@ interface ImageModalProps {
 }
 
 const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageSrc, imageAlt, onClose }) => {
-  const [isLoading, setIsLoading] = useState(true); // Track loading state
+  const [isLoading, setIsLoading] = useState(true);
+  const [scrollTop, setScrollTop] = useState(0); // Track scroll position
+
+  useEffect(() => {
+    if (isOpen) {
+      setScrollTop(window.scrollY); // Get the current scroll position when modal opens
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-md">
-      {/* Modal Content */}
-      <div className="relative p-4 max-w-4xl w-full max-h-[90vh] flex flex-col items-center">
+    <div
+      className="absolute inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-md"
+      style={{
+        top: scrollTop, // Position relative to scroll
+      }}
+      onClick={onClose}
+    >
+      <div
+        className="relative p-4 sm:p-6 max-w-4xl w-full max-h-[90vh] flex flex-col items-center overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -37,7 +52,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageSrc, imageAlt, onC
             alt={imageAlt}
             width={800}
             height={600}
-            loading='lazy'
+            loading="lazy"
             className={`rounded-lg object-contain transition-opacity duration-300 ${
               isLoading ? 'opacity-0' : 'opacity-100'
             }`}
