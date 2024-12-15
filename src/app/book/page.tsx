@@ -102,22 +102,18 @@ const BookPage = () => {
 
   return (
     <div className="bg-black text-offwhite font-serif bg-cover bg-center" 
-    style={{ backgroundImage: 'url(/background-image.jpg)' ,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
+    style={{ backgroundImage: 'url(/background-image.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
 
-    }}>
       {/* Navbar */}
       <Navbar />
 
-      {/* Book a Session Section */}
-      <section className="py-24 sm:py-32 px-6">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 text-yellow-400 font-serif uppercase tracking-widest">
+      {/* Hero Section */}
+      <section className="text-center py-24 sm:py-32 px-6">
+        <h2 className="text-4xl sm:text-5xl text-yellow-400 font-serif uppercase tracking-widest mb-8 leading-tight">
           Check My Availability and Book a Session
         </h2>
 
-        <div className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12">
+        <div className="max-w-7xl mx-auto mb-12">
           <iframe
             src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Africa%2FJohannesburg&showPrint=0&title=TLT%20BOOKING%20SLOTS&src=dGVlZWtzaG9wQGdtYWlsLmNvbQ&src=ZW4uc2EjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%230B8043"
             style={{ border: '0', width: '100%', height: '600px', borderRadius: '20px' }}
@@ -128,59 +124,55 @@ const BookPage = () => {
         </div>
 
         {/* Working Hours Section */}
-        <h3 className="text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-8 text-center">
+        <h3 className="text-3xl sm:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-8">
           My Working Hours
         </h3>
-        <section className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12">
-          <div className="p-6 bg-white rounded-lg shadow-md transform transition-transform duration-300  hover:shadow-lg">
-            <ul className="space-y-4 text-sm sm:text-base text-black">
-              <li className="flex justify-between">
-                <span>Monday</span>
-                <span className="font-bold text-black">9:00 AM - 6:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Tuesday</span>
-                <span className="font-bold ">9:00 AM - 6:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Wednesday</span>
-                <span className="font-bold ">9:00 AM - 6:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Thursday</span>
-                <span className="font-bold ">9:00 AM - 6:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Friday</span>
-                <span className="font-bold ">9:00 AM - 6:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Saturday</span>
-                <span className="font-bold ">10:00 AM - 4:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Sunday</span>
-                <span className="font-bold ">Closed</span>
-              </li>
-            </ul>
-          </div>
-
+        <section className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12 bg-black bg-opacity-95">
+          <ul className="space-y-4 text-lg text-white">
+            <li className="flex justify-between">
+              <span>Monday</span>
+              <span className="font-bold">9:00 AM - 6:00 PM</span>
+            </li>
+            <li className="flex justify-between">
+              <span>Tuesday</span>
+              <span className="font-bold">9:00 AM - 6:00 PM</span>
+            </li>
+            <li className="flex justify-between">
+              <span>Wednesday</span>
+              <span className="font-bold">9:00 AM - 6:00 PM</span>
+            </li>
+            <li className="flex justify-between">
+              <span>Thursday</span>
+              <span className="font-bold">9:00 AM - 6:00 PM</span>
+            </li>
+            <li className="flex justify-between">
+              <span>Friday</span>
+              <span className="font-bold">9:00 AM - 6:00 PM</span>
+            </li>
+            <li className="flex justify-between">
+              <span>Saturday</span>
+              <span className="font-bold">10:00 AM - 4:00 PM</span>
+            </li>
+            <li className="flex justify-between">
+              <span>Sunday</span>
+              <span className="font-bold">Closed</span>
+            </li>
+          </ul>
         </section>
 
         {/* Booking Form */}
-        <h3 className=" text-2xl sm:text-3xl md:text-4xl text-yellow-400 font-serif uppercase tracking-widest mb-4 text-center" id='request'>
-          Request a Slot 
+        <h3 className="text-3xl text-yellow-400 font-serif uppercase tracking-widest mb-8">
+          Request a Slot
         </h3>
         <p className="text-center text-lg text-white mb-12">
           Please note that this is a request form and not a confirmation of booking. We will get back to you to confirm your booking and more info.
         </p>
 
-        <div className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl mb-12 bg-black bg-opacity-90">
+        <div className="max-w-7xl mx-auto border border-white p-8 rounded-xl shadow-xl bg-black bg-opacity-90">
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Form fields */}
             <div className="grid grid-cols-1 sm:grid-cols-1 gap-6">
               <div>
-                <label htmlFor="name" className="block text-sm sm:text-lg text-white mb-2">Full Name</label>
+                <label htmlFor="name" className="block text-lg text-white mb-2">Full Name</label>
                 <input
                   type="text"
                   id="name"
@@ -193,7 +185,7 @@ const BookPage = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm sm:text-lg text-white mb-2">Email</label>
+                <label htmlFor="email" className="block text-lg text-white mb-2">Email</label>
                 <input
                   type="email"
                   id="email"
@@ -209,7 +201,7 @@ const BookPage = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-1 gap-6">
               <div>
-                <label htmlFor="phone" className="block text-sm sm:text-lg text-white mb-2">Phone Number</label>
+                <label htmlFor="phone" className="block text-lg text-white mb-2">Phone Number</label>
                 <input
                   type="tel"
                   id="phone"
@@ -222,7 +214,7 @@ const BookPage = () => {
               </div>
 
               <div>
-                <label htmlFor="category" className="block text-sm sm:text-lg text-white mb-2">Category</label>
+                <label htmlFor="category" className="block text-lg text-white mb-2">Category</label>
                 <select
                   id="category"
                   name="category"
@@ -242,7 +234,7 @@ const BookPage = () => {
               </div>
 
               <div>
-                <label htmlFor="date" className="block text-sm sm:text-lg text-white mb-2">Preferred Date</label>
+                <label htmlFor="date" className="block text-lg text-white mb-2">Preferred Date</label>
                 <input
                   type="date"
                   id="date"
@@ -255,7 +247,7 @@ const BookPage = () => {
               </div>
 
               <div>
-                <label htmlFor="time" className="block text-sm sm:text-lg text-white mb-2">Start Time</label>
+                <label htmlFor="time" className="block text-lg text-white mb-2">Start Time</label>
                 <input
                   type="time"
                   id="time"
@@ -266,47 +258,41 @@ const BookPage = () => {
                   required
                 />
               </div>
-            </div>
 
-            <div>
-              <label htmlFor="message" className="block text-sm sm:text-lg text-white mb-2">Additional Message</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                className="w-full p-3 text-white rounded-md border border-white bg-black"
-                rows={4}
-              />
-            </div>
+              <div>
+                <label htmlFor="message" className="block text-lg text-white mb-2">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="w-full p-3 text-white rounded-md border border-white bg-black"
+                  rows={4}
+                />
+              </div>
 
-            <div className="text-center">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`px-6 py-3 text-lg text-black bg-yellow-400 rounded-md ${isSubmitting && 'opacity-50'}`}
+                className="w-full py-3 text-black font-bold bg-yellow-400 rounded-md hover:bg-yellow-500 transition"
               >
-                {isSubmitting ? 'Submitting...' : 'Submit Request'}
+                {isSubmitting ? 'Submitting...' : 'Submit Booking Request'}
               </button>
             </div>
-
-            {formStatus && (
-              <div className={`text-center mt-6 ${formStatus.includes('Successfully') ? 'text-green-500' : 'text-red-500'}`}>
-                <p>{formStatus}</p>
-              </div>
-            )}
           </form>
+
+          <p className="text-center text-white mt-4">{formStatus}</p>
         </div>
       </section>
 
-      {/* Scroll-Up Button */}
+      {/* Scroll Up Button */}
       {showScrollUp && (
-        <div
+        <button
           onClick={scrollToTop}
-          className="fixed bottom-16 right-6 bg-yellow-400 text-black p-4 rounded-full cursor-pointer shadow-lg z-50 hover:bg-yellow-500 transition-all"
+          className="fixed bottom-6 right-6 p-4 rounded-full bg-yellow-400 text-black hover:bg-yellow-500 transition"
         >
           <FaArrowUp />
-        </div>
+        </button>
       )}
     </div>
   );
