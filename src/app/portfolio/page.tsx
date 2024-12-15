@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation'; // Import useRouter
+import { useRouter } from 'next/navigation'; 
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -16,18 +16,21 @@ const PortfolioSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [showScrollUpButton, setShowScrollUpButton] = useState(false); // State to track scroll position
+  const [showScrollUpButton, setShowScrollUpButton] = useState(false); 
+  const [scrollPosition, setScrollPosition] = useState(0); // To store the scroll position
 
-  const router = useRouter(); // Initialize useRouter
+  const router = useRouter();
 
   const openModal = (picture: Picture) => {
-    setActivePicture(picture);
+    setScrollPosition(window.scrollY); // Store the current scroll position
+    setActivePicture({ ...picture });
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
     setActivePicture(null);
+    window.scrollTo(0, scrollPosition); // Restore the scroll position after closing modal
   };
 
   const filteredPictures =
@@ -55,35 +58,46 @@ const PortfolioSection = () => {
   }, []);
 
   useEffect(() => {
-    // Get query parameters
     const params = new URLSearchParams(window.location.search);
     const section = params.get('section');
 
-    // Update selected category if the section exists
     if (section) {
       setSelectedCategory(section);
     }
-  }, [router.refresh]); // Dependency to re-run when query parameters change
+  }, [router.refresh]);
 
-  // Handle scroll position to show/hide the "Scroll Up" button
+  useEffect(() => {
+    // Handle scroll position change based on modal state
+    if (isModalOpen) {
+      // Disable scrolling when the modal is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Re-enable scrolling when the modal is closed
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      // Ensure overflow is reset when the component unmounts or when the modal is closed
+      document.body.style.overflow = 'auto';
+    };
+  }, [isModalOpen]);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
-        setShowScrollUpButton(true); // Show button when scrolled down 300px
+        setShowScrollUpButton(true);
       } else {
-        setShowScrollUpButton(false); // Hide button when scrolled to top
+        setShowScrollUpButton(false);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
 
-    // Cleanup event listener on unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  // Scroll to the top of the page
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -91,11 +105,9 @@ const PortfolioSection = () => {
   return (
     <section className="text-offwhite font-serif">
       <Navbar />
-      {/* <section className="bg-black text-white py-16 px-6 min-h-screen"> */}
-        <section className="flex flex-col items-center justify-center text-center animate-fadeIn px-6 py-10 sm:px-10 sm:py-16 mt-[4rem] sm:mt-[5rem] bg-black">
+      <section className="flex flex-col items-center justify-center text-center animate-fadeIn px-6 py-10 sm:px-10 sm:py-16 mt-[4rem] sm:mt-[5rem] bg-black">
 
         <h2 className="text-4xl md:text-6xl font-serif uppercase text-center tracking-widest mb-12 text-yellow-400">
-
           Portfolio.
         </h2>
 
@@ -103,7 +115,6 @@ const PortfolioSection = () => {
           <Loader />
         ) : (
           <>
-            {/* Filter Buttons */}
             <div className="flex flex-wrap md:flex-nowrap justify-center gap-2 md:gap-4 mb-4 px-4 overflow-x-scroll scrollbar-hide">
               {['All', ...categories.map((cat) => cat.title)].map((cat, index) => (
                 <button
@@ -120,7 +131,6 @@ const PortfolioSection = () => {
               ))}
             </div>
 
-            {/* Masonry Layout with Tailwind Columns */}
             <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6">
               {filteredPictures.map((picture, index) => (
                 <div
@@ -145,18 +155,18 @@ const PortfolioSection = () => {
           </>
         )}
 
-        {/* Image Modal */}
         {activePicture && (
-          <ImageModal
-            isOpen={isModalOpen}
-            imageSrc={activePicture.src}
-            imageAlt={activePicture.alt}
-            onClose={closeModal}
-          />
+          <div className="z-50">
+            <ImageModal
+              isOpen={isModalOpen}
+              imageSrc={activePicture.src}
+              imageAlt={activePicture.alt}
+              onClose={closeModal}
+            />
+          </div>
         )}
       </section>
 
-      {/* Scroll Up Button */}
       {showScrollUpButton && (
         <div
           onClick={scrollToTop}

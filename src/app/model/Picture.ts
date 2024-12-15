@@ -3,4 +3,5 @@ export interface Picture {
     alt: string;
     width: number;
     height: number;
+    scrollY?: number;
   }

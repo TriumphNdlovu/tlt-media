@@ -11,11 +11,14 @@ interface ImageModalProps {
 
 const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageSrc, imageAlt, onClose }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [scrollTop, setScrollTop] = useState(0); // Track scroll position
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     if (isOpen) {
-      setScrollTop(window.scrollY); // Get the current scroll position when modal opens
+      setScrollY(window.scrollY); // Capture scrollY position
+      document.body.style.overflow = 'hidden'; // Lock scroll when modal is open
+    } else {
+      document.body.style.overflow = ''; // Unlock scroll when modal is closed
     }
   }, [isOpen]);
 
@@ -23,9 +26,9 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageSrc, imageAlt, onC
 
   return (
     <div
-      className="absolute inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-md"
+      className="fixed inset-0 z-50 bg-black bg-opacity-80 backdrop-blur-md"
       style={{
-        top: scrollTop, // Position relative to scroll
+        transform: `translateY(${scrollY}px)`, // Position modal based on scroll
       }}
       onClick={onClose}
     >
@@ -33,14 +36,12 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageSrc, imageAlt, onC
         className="relative p-4 sm:p-6 max-w-4xl w-full max-h-[90vh] flex flex-col items-center overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-white text-2xl font-bold bg-yellow-500 rounded-full w-10 h-10 flex items-center justify-center hover:bg-yellow-400 transition z-30"
         >
           &times;
         </button>
-        {/* Image or Loader */}
         <div className="relative w-full max-h-full rounded-lg flex justify-center items-center">
           {isLoading && (
             <div className="absolute inset-0 flex justify-center items-center">
