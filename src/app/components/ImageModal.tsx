@@ -14,12 +14,12 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageSrc, imageAlt, onC
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    if (isOpen) {
-      setScrollY(window.scrollY); // Capture scrollY position
-      document.body.style.overflow = 'hidden'; // Lock scroll when modal is open
-    } else {
-      document.body.style.overflow = ''; // Unlock scroll when modal is closed
-    }
+    // if (isOpen) {
+    //   setScrollY(window.scrollY); // Capture scrollY position
+    //   document.body.style.overflow = 'hidden'; // Lock scroll when modal is open
+    // } else {
+    //   document.body.style.overflow = ''; // Unlock scroll when modal is closed
+    // }
   }, [isOpen]);
 
   if (!isOpen) return null;
