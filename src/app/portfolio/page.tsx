@@ -131,11 +131,11 @@ const PortfolioSection = () => {
               ))}
             </div>
 
-            <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6">
+            <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 lg:w-[70%] w-full">
               {filteredPictures.map((picture, index) => (
                 <div
                   key={index}
-                  className="relative overflow-hidden rounded-lg mb-6 group cursor-pointer"
+                  className="relative overflow-hidden rounded-lg mb-6 group cursor-pointer "
                   onClick={() => openModal(picture)}
                 >
                   <Image
@@ -156,7 +156,7 @@ const PortfolioSection = () => {
         )}
 
         {activePicture && (
-          <div className="z-50">
+          <div className="z-50 flex items-center justify-center text-center">
             <ImageModal
               isOpen={isModalOpen}
               imageSrc={activePicture.src}
