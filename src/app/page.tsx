@@ -60,31 +60,19 @@ const HomePage = () => {
         'Matric Dance',
         'Baby Showers',
       ],
-      price: 'Starting at R1,200',
+      price: 'Starts at only R1,000',
     },
     {
       id: 2,
-      title: 'Birthday Parties',
+      title: 'Baby Shower',
       description:
-        'Whether it’s professional headshots or family portraits, I create stunning images that reflect your personality.',
+        'Celebrate the arrival of your little one with a beautiful baby shower shoot.',
       features: [
         'Studio or outdoor shoots',
         'Customized creative themes',
         'Quick editing turnaround',
       ],
-      price: 'Starting at R2,000',
-    },
-    {
-      id: 4,
-      title: 'Lobola Negotiations',
-      description:
-      'Capture the beauty and tradition of your lobola negotiations with professional photography and videography.',
-      features: [
-        'Full-day coverage',
-        'Customized packages',
-        'Quick editing turnaround',
-      ],
-      price: 'Starting at R3,000',
+      price: 'Starting at R1,500',
     },
     {
       id: 5,
@@ -98,18 +86,32 @@ const HomePage = () => {
       ],
       price: 'Starting at R3,000',
     },
-      {
-        id: 3,
-        title: 'Wedding',
-        description:
-          'Celebrate your love with stunning wedding photography that captures every detail of your special day.',
-        features: [
-          'Full-day coverage',
-          'Engagement shoot',
-          'Customized packages',
-        ],
-        price: 'Starting at R6,000',
-      },
+    {
+      id: 4,
+      title: 'Lobola Negotiations',
+      description:
+      'Capture the beauty and tradition of your lobola negotiations with professional photography and videography.',
+      features: [
+        'Full-day coverage',
+        'Customized packages',
+        'Quick editing turnaround',
+      ],
+      price: 'Starting at R4,000',
+    },
+    {
+      id: 3,
+      title: 'Wedding',
+      description:
+      'Celebrate your love with stunning wedding photography that captures every detail of your special day.',
+      features: [
+        'Full-day coverage',
+        'Engagement shoot',
+        'Customized packages',
+        '2 days of shooting : R10 000',
+      ],
+      price: 'Starting at R6,000',
+    },
+    
     {
       id: 6,
       title: 'Other',
