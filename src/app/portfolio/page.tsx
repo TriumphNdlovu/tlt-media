@@ -8,7 +8,7 @@ import { Picture } from '../model/Picture';
 import { Category } from '../model/category';
 import Loader from '../components/Loader';
 import ImageModal from '../components/ImageModal';
-import { FaArrowUp } from 'react-icons/fa';
+import { FaArrowUp, FaBars, FaTh } from 'react-icons/fa';
 
 const PortfolioSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,6 +18,7 @@ const PortfolioSection = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [showScrollUpButton, setShowScrollUpButton] = useState(false); 
   const [scrollPosition, setScrollPosition] = useState(0); // To store the scroll position
+  const [isGridView, setIsGridView] = useState<boolean>(true);
 
   const router = useRouter();
 
@@ -110,33 +111,55 @@ const PortfolioSection = () => {
 
         <h2 className="text-4xl md:text-6xl font-serif uppercase text-center tracking-widest mb-12 text-yellow-400">
           Portfolio.
+
         </h2>
+          
 
         {isLoading ? (
           <Loader />
         ) : (
           <>
-            <div className="flex flex-wrap md:flex-nowrap justify-center gap-2 md:gap-4 mb-4 px-4 overflow-x-scroll scrollbar-hide">
-              {['All', ...categories.map((cat) => cat.title)].map((cat, index) => (
-                <button
-                  key={index}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`whitespace-nowrap px-4 py-2 text-sm md:text-base rounded-full transition-colors duration-200 ${
-                    selectedCategory === cat
-                      ? 'bg-yellow-400 text-black'
-                      : 'bg-gray-700 text-white hover:bg-gray-600'
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
+          <div className="flex justify-between items-center w-full mb-6 px-4">
+  <div className="flex flex-wrap md:flex-nowrap gap-2">
+    {['All', ...categories.map((cat) => cat.title)].map((cat, index) => (
+      <button
+        key={index}
+        onClick={() => setSelectedCategory(cat)}
+        className={`whitespace-nowrap px-4 py-2 text-sm md:text-base rounded-full transition-colors duration-200 ${
+          selectedCategory === cat
+            ? 'bg-yellow-400 text-black'
+            : 'bg-gray-700 text-white hover:bg-gray-600'
+        }`}
+      >
+        {cat}
+      </button>
+    ))}
+  </div>
+  <button
+    onClick={() => setIsGridView(!isGridView)}
+    className="bg-yellow-400 text-black p-1.5 rounded-md hover:bg-yellow-500 transition-all flex items-center justify-center w-8 h-8"
+    aria-label={isGridView ? 'Switch to Column View' : 'Switch to Grid View'}
+  >
+    {isGridView ? <FaBars size={16} /> : <FaTh size={16} />}
+  </button>
+</div>
 
-            <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 lg:w-[70%] w-full">
+
+            
+
+            <div
+              className={`${
+                isGridView
+                  ? 'columns-2 sm:columns-3 lg:columns-4 xl:columns-4'
+                  : 'flex flex-col items-center'
+              } gap-4 lg:w-[70%] w-full `}
+            >
+
               {filteredPictures.map((picture, index) => (
                 <div
                   key={index}
                   className="relative overflow-hidden rounded-lg mb-6 group cursor-pointer "
+                  
                   onClick={() => openModal(picture)}
                 >
                   <Image
