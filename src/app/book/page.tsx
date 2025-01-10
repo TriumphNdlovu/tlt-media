@@ -113,9 +113,15 @@ const BookPage = () => {
           Check My Availability and Book a Session
         </h2>
 
-        <div className="max-w-7xl mx-auto mb-12">
-          
-        <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Africa%2FJohannesburg&showPrint=0&title=TLT%20media&src=bGVobG9nb25vbG9naXZlbjhAZ21haWwuY29t&src=ZW4uc2EjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&src=ZW4tZ2Iuc2EjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%230B8043&color=%230B8043" style={{ border: 'solid 1px #777' }} width="800" height="600" frameBorder="0" scrolling="no"></iframe>
+        <div className="max-w-7xl mx-auto mb-12"> 
+        <iframe 
+          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Africa%2FJohannesburg&showPrint=0&title=TLT%20media&src=bGVobG9nb25vbG9naXZlbjhAZ21haWwuY29t&src=ZW4uc2EjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&src=ZW4tZ2Iuc2EjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%230B8043&color=%230B8043" 
+          style={{ borderWidth: 1, borderStyle: 'solid', borderColor: '#777' }}
+          width="100%"
+          height="600"  
+          >
+
+          </iframe>
         </div>
 
         {/* Working Hours Section */}

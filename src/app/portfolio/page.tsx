@@ -22,6 +22,7 @@ const PortfolioSection = () => {
   const router = useRouter();
 
   const openModal = (picture: Picture) => {
+    console.log("The scroll position is: ", window.scrollY);
     setScrollPosition(window.scrollY); // Store the current scroll position
     setActivePicture({ ...picture });
     setIsModalOpen(true);
