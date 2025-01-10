@@ -22,7 +22,7 @@ export async function POST(request: Request) {
       description: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
       location: `My Studio or ${name}'s Location`,
       status: 'CONFIRMED' as EventStatus,
-      organizer: { name: 'TLT MEDIA', email: process.env.EMAIL_USER! },
+      organizer: { name: 'TLT MEDIA', email: "lehlogonologiven8@gmail.com" },
       attendees: [{ name, email }, { name: 'Hlogi', email: "lehlogonologiven8@gmail.com" }],
     };
 
