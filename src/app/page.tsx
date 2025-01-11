@@ -253,7 +253,7 @@ const HomePage = () => {
                       ? 'Wedding'
                       : item === 3
                       ? 'Matric dance'
-                      : 'Brand shoot'
+                      : 'Other'
                   }`}
                 >
                   <div className="relative h-60 lg:h-72 w-full overflow-hidden">
