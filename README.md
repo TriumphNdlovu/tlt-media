@@ -1,3 +1,4 @@
+![Untitled2](https://github.com/user-attachments/assets/034891e8-424f-4a7a-aa9e-425d059ae601)
 # TLT Media Website
 
 This repository contains the codebase for a modern photography portfolio website built using Next.js and Cloudinary. The website allows photographers to showcase their work, organize images into categories, and manage content through a dedicated content management page.
