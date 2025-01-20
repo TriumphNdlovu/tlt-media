@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation'; 
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
@@ -8,7 +8,7 @@ import { Picture } from '../model/Picture';
 import { Category } from '../model/category';
 import Loader from '../components/Loader';
 import ImageModal from '../components/ImageModal';
-import { FaArrowUp, FaBars, FaTh } from 'react-icons/fa';
+import { FaArrowUp, FaBars, FaExpand, FaTh } from 'react-icons/fa';
 
 const PortfolioSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,14 +17,14 @@ const PortfolioSection = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [showScrollUpButton, setShowScrollUpButton] = useState(false); 
-  const [scrollPosition, setScrollPosition] = useState(0); // To store the scroll position
   const [isGridView, setIsGridView] = useState<boolean>(true);
+  const [scrollPosition, setScrollPosition] = useState(0); // Store the scroll position
 
+  const modalRef = useRef<HTMLDivElement>(null); // Reference to the modal element
   const router = useRouter();
 
   const openModal = (picture: Picture) => {
-    console.log("The scroll position is: ", window.scrollY);
-    setScrollPosition(window.scrollY); // Store the current scroll position
+    setScrollPosition(window.scrollY); // Store current scroll position
     setActivePicture({ ...picture });
     setIsModalOpen(true);
   };
@@ -32,7 +32,26 @@ const PortfolioSection = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setActivePicture(null);
-    window.scrollTo(0, scrollPosition); // Restore the scroll position after closing modal
+    window.scrollTo(0, scrollPosition); // Restore the scroll position
+  };
+
+  const goToNextPicture = () => {
+    if (!activePicture) return;
+    const currentIndex = filteredPictures.findIndex(
+      (picture) => picture.src === activePicture.src
+    );
+    const nextIndex = (currentIndex + 1) % filteredPictures.length;
+    setActivePicture(filteredPictures[nextIndex]);
+  };
+
+  const goToPreviousPicture = () => {
+    if (!activePicture) return;
+    const currentIndex = filteredPictures.findIndex(
+      (picture) => picture.src === activePicture.src
+    );
+    const prevIndex =
+      (currentIndex - 1 + filteredPictures.length) % filteredPictures.length;
+    setActivePicture(filteredPictures[prevIndex]);
   };
 
   const filteredPictures =
@@ -69,22 +88,6 @@ const PortfolioSection = () => {
   }, [router.refresh]);
 
   useEffect(() => {
-    // Handle scroll position change based on modal state
-    if (isModalOpen) {
-      // Disable scrolling when the modal is open
-      document.body.style.overflow = 'hidden';
-    } else {
-      // Re-enable scrolling when the modal is closed
-      document.body.style.overflow = 'auto';
-    }
-
-    return () => {
-      // Ensure overflow is reset when the component unmounts or when the modal is closed
-      document.body.style.overflow = 'auto';
-    };
-  }, [isModalOpen]);
-
-  useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
         setShowScrollUpButton(true);
@@ -104,6 +107,18 @@ const PortfolioSection = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Scroll the modal content into view when opened
+  useEffect(() => {
+    if (isModalOpen && modalRef.current) {
+      setTimeout(() => {
+        modalRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center', 
+        });
+      }, 150); 
+    }
+  }, [isModalOpen]);
+
   return (
     <section className="text-offwhite font-serif">
       <Navbar />
@@ -111,41 +126,36 @@ const PortfolioSection = () => {
 
         <h2 className="text-4xl md:text-6xl font-serif uppercase text-center tracking-widest mb-12 text-yellow-400">
           Portfolio.
-
         </h2>
-          
 
         {isLoading ? (
           <Loader />
         ) : (
           <>
-          <div className="flex justify-between items-center w-full mb-6 px-4">
-  <div className="flex flex-wrap md:flex-nowrap gap-2">
-    {['All', ...categories.map((cat) => cat.title)].map((cat, index) => (
-      <button
-        key={index}
-        onClick={() => setSelectedCategory(cat)}
-        className={`whitespace-nowrap px-4 py-2 text-sm md:text-base rounded-full transition-colors duration-200 ${
-          selectedCategory === cat
-            ? 'bg-yellow-400 text-black'
-            : 'bg-gray-700 text-white hover:bg-gray-600'
-        }`}
-      >
-        {cat}
-      </button>
-    ))}
-  </div>
-  <button
-    onClick={() => setIsGridView(!isGridView)}
-    className="bg-yellow-400 text-black p-1.5 rounded-md hover:bg-yellow-500 transition-all flex items-center justify-center w-8 h-8"
-    aria-label={isGridView ? 'Switch to Column View' : 'Switch to Grid View'}
-  >
-    {isGridView ? <FaBars size={16} /> : <FaTh size={16} />}
-  </button>
-</div>
-
-
-            
+            <div className="flex justify-between items-center w-full mb-6 px-4">
+              <div className="flex flex-wrap md:flex-nowrap gap-2">
+                {['All', ...categories.map((cat) => cat.title)].map((cat, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`whitespace-nowrap px-4 py-2 text-sm md:text-base rounded-full transition-colors duration-200 ${
+                      selectedCategory === cat
+                        ? 'bg-yellow-400 text-black'
+                        : 'bg-gray-700 text-white hover:bg-gray-600'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+              <button
+                onClick={() => setIsGridView(!isGridView)}
+                className="bg-yellow-400 text-black p-1.5 rounded-md hover:bg-yellow-500 transition-all flex items-center justify-center w-8 h-8"
+                aria-label={isGridView ? 'Switch to Column View' : 'Switch to Grid View'}
+              >
+                {isGridView ? <FaBars size={16} /> : <FaTh size={16} />}
+              </button>
+            </div>
 
             <div
               className={`${
@@ -154,12 +164,10 @@ const PortfolioSection = () => {
                   : 'flex flex-col items-center'
               } gap-4 lg:w-[70%] w-full `}
             >
-
               {filteredPictures.map((picture, index) => (
                 <div
                   key={index}
                   className="relative overflow-hidden rounded-lg mb-6 group cursor-pointer "
-                  
                   onClick={() => openModal(picture)}
                 >
                   <Image
@@ -171,7 +179,9 @@ const PortfolioSection = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <p className="text-white font-serif text-lg">View</p>
+                    <p className="text-white font-serif text-lg">
+                      <FaExpand className="text-5xl" />
+                    </p>
                   </div>
                 </div>
               ))}
@@ -180,14 +190,15 @@ const PortfolioSection = () => {
         )}
 
         {activePicture && (
-          <div className="z-50 flex items-center justify-center text-center">
-            <ImageModal
-              isOpen={isModalOpen}
-              imageSrc={activePicture.src}
-              imageAlt={activePicture.alt}
-              onClose={closeModal}
-            />
-          </div>
+          <ImageModal
+            isOpen={isModalOpen}
+            imageSrc={activePicture.src}
+            imageAlt={activePicture.alt}
+            onClose={closeModal}
+            onNext={goToNextPicture}
+            onPrev={goToPreviousPicture}
+            ref={modalRef} 
+          />
         )}
       </section>
 
